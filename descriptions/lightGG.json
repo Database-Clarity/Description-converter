@@ -1,0 +1,177 @@
+{
+ "2010801679": {
+  "hash": 2010801679,
+  "name": "Ambitious Assassin",
+  "lastUpload": 1670275048646,
+  "updateTracker": {
+   "descriptions": {
+    "en": {
+     "lastUpdate": 1670090337150,
+     "updatedBy": "Stardust"
+    },
+    "es": {
+     "lastUpdate": 1665682849650,
+     "updatedBy": "miniatimat"
+    },
+    "zh-chs": {
+     "lastUpdate": 1670250407579,
+     "updatedBy": "Mistwalker"
+    }
+   }
+  },
+  "descriptions": {
+   "en": [
+    {
+     "linesContent": [
+      {
+       "text": "Upon finishing a reload within 7 seconds of a Weapon Kill:"
+      }
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": "Increases Magazine Capacity based on the amount of kills within 7 seconds of each."
+      }
+     ]
+    },
+    {
+     "classNames": [
+      "spacer"
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": "Maxes out at 150% increased Magazine Capacity. Always rounds magazine up."
+      }
+     ]
+    },
+    {
+     "classNames": [
+      "spacer"
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": " Primary Weapons: 20% Increased Magazine Capacity per Kill."
+      }
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": " Special and "
+      },
+      {
+       "text": " Power Weapons: 10%."
+      }
+     ]
+    }
+   ],
+   "es": [
+    {
+     "linesContent": [
+      {
+       "text": "Luego de recargar despues de  [?] segundos despues de una Baja con el arma:"
+      }
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": "Aumenta la capacidad del Cargador por baja dentro de [?] segundos"
+      }
+     ]
+    },
+    {
+     "classNames": [
+      "spacer"
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": "Puede llegar a ser un 150% la cantidad del cargador original. Redondea hacia arriba."
+      }
+     ]
+    },
+    {
+     "classNames": [
+      "spacer"
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": "Armas Primarias reciben un 20% a la capacidad aumentada por baja. Armas Especiales y Pesadas reciben un 10%"
+      }
+     ]
+    },
+    {
+     "classNames": [
+      "spacer"
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": "Aumentado: Otorga +5 a la velocidad de recarga de forma pasiva"
+      }
+     ]
+    }
+   ],
+   "zh-chs": [
+    {
+     "linesContent": [
+      {
+       "text": "该武器击杀后 7 秒内换弹："
+      }
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": "7 秒内的每个击杀都可过量填加弹匣，"
+      }
+     ]
+    },
+    {
+     "classNames": [
+      "spacer"
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": "最高过量填加 50%，计算结果向上取整。"
+      }
+     ]
+    },
+    {
+     "classNames": [
+      "spacer"
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": " 主武器：每个击杀过量填加 20%。"
+      }
+     ]
+    },
+    {
+     "linesContent": [
+      {
+       "text": " 特殊武器和 "
+      },
+      {
+       "text": " 重武器：每个击杀过量填加 10%。"
+      }
+     ]
+    }
+   ]
+  }
+ }
+}

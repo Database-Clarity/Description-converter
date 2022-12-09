@@ -1,0 +1,265 @@
+{
+   "0": {
+      "hash": 0,
+      "name": "Default perk",
+      "type": "none",
+      "lastUpload": 1670345736402,
+      "uploadedBy": "Mistwalker",
+      "editor": {
+         "en": {
+            "main": "Images you can use in descriptions\n<arc/> <void/> <solar/>\n<primary/> <special/> <heavy/>\n<warlock/> <hunter/> <titan/>\nText coloring\n<blue text /> <green text /> <purple text /> <yellow text />\n<pvp text /> <pve text />\n\nThe same can be done to lines of text <green/>\n\nYou probably noticed having multiple spaces in the editor\n              doesn't mean it will be the same in description\n              you can change that with <breakSpaces/>\n\n// This is comment content after // will not appear in the description\n\n// ----------------------------------------------------------\n// weapon type explanation\n// they work like if else in programming\n\n// if auto rifle\n< weapon type ( AR ) >\n    Apply this text\n// else if glaive\n< ( Glaive ) >\n    Apply this text\n// else\n< ( other ) >\n    Apply this text to all weapons not specified in this block\n<$$>\n// also, you can preview how it would look on x weapon by selecting the weapon in the weapon popup under the weapons name\n// ----------------------------------------------------------\nIf there is something you want just ask\nThis is not everything you can do btw\n\nTo see the full list press CTRL + SPACE\nAlso, CTRL + F is a thing and can be used to find and replace\nAlso also editor has other stuff to see them press F1",
+            "secondary": ""
+         }
+      },
+      "updateTracker": {
+         "stats": {
+            "lastUpdate": 0,
+            "updatedBy": ""
+         },
+         "descriptions": {
+            "en": {
+               "lastUpdate": 0,
+               "updatedBy": ""
+            }
+         }
+      },
+      "uploadToLive": false,
+      "hidden": false,
+      "inLiveDatabase": false,
+      "optional": false
+   },
+   "1": {
+      "hash": 1,
+      "name": "Global exports",
+      "type": "none",
+      "lastUpload": 1670107195856,
+      "editor": {
+         "en": {
+            "main": "manual fix",
+            "secondary": ""
+         }
+      },
+      "updateTracker": {
+         "stats": {
+            "lastUpdate": 0
+         },
+         "descriptions": {
+            "en": {
+               "lastUpdate": 1666719138645,
+               "updatedBy": "Fading Shadow"
+            }
+         }
+      },
+      "uploadToLive": false,
+      "hidden": false,
+      "inLiveDatabase": true,
+      "optional": false,
+      "uploadedBy": "Stardust"
+   },
+   "2": {
+      "hash": 2,
+      "name": "Global variables",
+      "type": "none",
+      "lastUpload": 1670275048646,
+      "editor": {
+         "en": {
+            "main": "// this variale only shows up on enhanced perks\nvar e = 🠅\n\nvar refill = Reload, but does not need animation and doesn't proc on-reload perks.",
+            "secondary": ""
+         },
+         "zh-chs": {
+            "main": "// this variale only shows up on enhanced perks\nvar e = 🠅\n\nvar refill = 重新装填，但没有装填动画，也不触发换弹相关特性。\n\nvar rof = <title 射速 [G_rof] />",
+            "secondary": ""
+         }
+      },
+      "updateTracker": {
+         "stats": {
+            "lastUpdate": 0
+         },
+         "descriptions": {
+            "en": {
+               "lastUpdate": 1670255864845,
+               "updatedBy": "Mistwalker"
+            },
+            "zh-chs": {
+               "lastUpdate": 1670255872621,
+               "updatedBy": "Mistwalker"
+            }
+         }
+      },
+      "uploadToLive": false,
+      "hidden": false,
+      "inLiveDatabase": true,
+      "optional": false,
+      "uploadedBy": "Mistwalker"
+   },
+   "3": {
+      "hash": 3,
+      "name": "Global titles",
+      "type": "none",
+      "lastUpload": 1670345736402,
+      "editor": {
+         "en": {
+            "main": "title G_refresh (\n#refill\n)\ntitle G_refill (\n#refill\n)\n\ntitle G_conegrowth (\nHow Fast Your Accuracy Cone Expands as you fire your weapon. The less the better.\n)\n\ntitle Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "zh-chs": {
+            "main": "title G_refresh (\n#refill\n)\ntitle G_refill (\n#refill\n)\n\ntitle G_conegrowth (\n开火时精度锥角的扩散速度，该数值越小越好。\n)\n\ntitle G_conesize (\n开火时精度锥角的扩散尺寸，该数值越小越好。\n)\n\ntitle G_rds (\n装填动画系数： 该系数 * 默认装填动画持续时间 = 实际装填时间\n)\n\ntitle G_as (\n动画系数： 该系数 * 默认动画时长 = 实际动画时长\n)\n\ntitle Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "de": {
+            "main": "\n\ntitle Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "fr": {
+            "main": "title Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "it": {
+            "main": "title Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "pl": {
+            "main": "title Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "ru": {
+            "main": "title Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "es": {
+            "main": "title Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "es-mx": {
+            "main": "title Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "ko": {
+            "main": "title Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "pt-rb": {
+            "main": "title Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "ja": {
+            "main": "title Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         },
+         "zh-cht": {
+            "main": "title Whisper of Durance (\nimport main from 3469412969\n)",
+            "secondary": ""
+         }
+      },
+      "updateTracker": {
+         "stats": {
+            "lastUpdate": 0
+         },
+         "descriptions": {
+            "en": {
+               "lastUpdate": 1670082119732,
+               "updatedBy": "Stardust"
+            },
+            "zh-chs": {
+               "lastUpdate": 1670345731647,
+               "updatedBy": "Mistwalker"
+            },
+            "de": {
+               "lastUpdate": 1668799804945,
+               "updatedBy": "Icemourne"
+            },
+            "fr": {
+               "lastUpdate": 1668799809269,
+               "updatedBy": "Icemourne"
+            },
+            "it": {
+               "lastUpdate": 1668799813271,
+               "updatedBy": "Icemourne"
+            },
+            "pl": {
+               "lastUpdate": 1668799816649,
+               "updatedBy": "Icemourne"
+            },
+            "ru": {
+               "lastUpdate": 1668799819782,
+               "updatedBy": "Icemourne"
+            },
+            "es": {
+               "lastUpdate": 1668799823035,
+               "updatedBy": "Icemourne"
+            },
+            "es-mx": {
+               "lastUpdate": 1668799826496,
+               "updatedBy": "Icemourne"
+            },
+            "ko": {
+               "lastUpdate": 1668799829466,
+               "updatedBy": "Icemourne"
+            },
+            "pt-rb": {
+               "lastUpdate": 1668799832673,
+               "updatedBy": "Icemourne"
+            },
+            "ja": {
+               "lastUpdate": 1668799835709,
+               "updatedBy": "Icemourne"
+            },
+            "zh-cht": {
+               "lastUpdate": 1668799838794,
+               "updatedBy": "Icemourne"
+            }
+         }
+      },
+      "uploadToLive": false,
+      "hidden": false,
+      "inLiveDatabase": true,
+      "optional": false,
+      "uploadedBy": "Mistwalker"
+   },
+   "2010801679": {
+      "hash": 2010801679,
+      "name": "Ambitious Assassin",
+      "type": "weaponPerk",
+      "uploadedBy": "Mistwalker",
+      "lastUpload": 1670275048646,
+      "inLiveDatabase": true,
+      "uploadToLive": false,
+      "optional": false,
+      "hidden": false,
+      "updateTracker": {
+         "stats": {
+            "lastUpdate": 1659903012345,
+            "undatedBy": "Fading-Shadow"
+         },
+         "descriptions": {
+            "en": {
+               "lastUpdate": 1670090337150,
+               "updatedBy": "Stardust"
+            },
+            "zh-chs": {
+               "lastUpdate": 1670250407579,
+               "updatedBy": "Mistwalker"
+            },
+            "es": {
+               "lastUpdate": 1665682849650,
+               "updatedBy": "miniatimat"
+            }
+         }
+      },
+      "editor": {
+         "en": {
+            "main": "Upon finishing a reload within 7 seconds of a Weapon Kill:\nIncreases Magazine Capacity based on the amount of kills within 7 seconds of each.\n\nMaxes out at 150% increased Magazine Capacity. Always rounds magazine up.\n\n<primary/> Primary Weapons: 20% Increased Magazine Capacity per Kill.\n<special/> Special and <heavy/> Power Weapons: 10%.\n\nenhanced (\n#e Passively grants +5 Reload Speed. Timer between kills is increased to 8 seconds.\n)",
+            "secondary": "import self"
+         },
+         "zh-chs": {
+            "main": "该武器击杀后 7 秒内换弹：\n7 秒内的每个击杀都可过量填加弹匣， \n\n最高过量填加 50%，计算结果向上取整。\n\n<primary/> 主武器：每个击杀过量填加 20%。\n<special/> 特殊武器和 <heavy/> 重武器：每个击杀过量填加 10%。\n\nenhanced (\n#e +5 换弹速度\n)",
+            "secondary": "import self"
+         },
+         "es": {
+            "main": "Luego de recargar despues de  [?] segundos despues de una Baja con el arma:\nAumenta la capacidad del Cargador por baja dentro de [?] segundos\n\nPuede llegar a ser un 150% la cantidad del cargador original. Redondea hacia arriba. \n\nArmas Primarias reciben un 20% a la capacidad aumentada por baja. Armas Especiales y Pesadas reciben un 10%\n\nAumentado: Otorga +5 a la velocidad de recarga de forma pasiva",
+            "secondary": "import self"
+         }
+      },
+      "linkedWith": 3797647183
+   }
+}
