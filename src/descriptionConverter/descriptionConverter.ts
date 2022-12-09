@@ -1,5 +1,5 @@
-import { database } from '../utils/externalData'
 import { doMath } from './converterFunctions/doMath'
+import { database } from '../externalData'
 import { extractTitles } from './converterFunctions/extractTitles'
 import { loadExports } from './converterFunctions/loadExports'
 import { loadVariables } from './converterFunctions/loadVariables'

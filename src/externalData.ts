@@ -1,7 +1,8 @@
 import { readFileSync } from 'fs'
 import syncFetch from 'sync-fetch'
-import { Database } from '../descriptionConverter/interfaces'
-import { InventoryItems } from '../descriptionConverter/inventoryItem.interface'
+import { Database } from './descriptionConverter/interfaces'
+import { InventoryItems } from './descriptionConverter/inventoryItem.interface'
+
 
 let database_placeholder: Database | null = null
 if (database_placeholder === null) {

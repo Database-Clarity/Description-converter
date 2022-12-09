@@ -1,4 +1,4 @@
-import { database } from '../../utils/externalData'
+import { database } from '../../externalData'
 import { Languages } from '../interfaces'
 
 export const getVariables = (description: string) => {

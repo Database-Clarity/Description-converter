@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { DescriptionFilter } from '../converterSettings'
-import { Perk } from '../descriptionConverter/interfaces'
+import { Perk } from '../interfaces'
 
 export const getDataFromPerk = (perk: Perk, filters: DescriptionFilter['getFromPerk']) => {
    const getFromPerk = ['hash', 'name', 'itemHash', 'itemName', 'editor']

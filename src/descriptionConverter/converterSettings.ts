@@ -1,5 +1,5 @@
-import { allClassNames, languageKeys } from './descriptionConverter/data'
-import { AllClassNames, Languages } from './descriptionConverter/interfaces'
+import { allClassNames, languageKeys } from './data'
+import { AllClassNames, Languages } from './interfaces'
 
 export interface DescriptionFilter {
    getFromPerk: {

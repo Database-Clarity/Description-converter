@@ -1,13 +1,13 @@
 import { existsSync, mkdirSync, writeFileSync } from 'fs'
 import _ from 'lodash'
-import { converterSettings, getSettings } from './converterSettings'
+import { converterSettings, getSettings } from './descriptionConverter/converterSettings'
 import { descriptionConverter } from './descriptionConverter/descriptionConverter'
 import { Languages } from './descriptionConverter/interfaces'
-import { LivePerk } from './livePerkInterface'
-import { cleanObject } from './utils/cleanObject'
-import { descriptionFilter } from './utils/descriptionFilter'
-import { database, inventoryItems } from './utils/externalData'
-import { getDataFromPerk } from './utils/getDataFromPerk'
+import { cleanObject } from './descriptionConverter/converterFunctions/cleanObject'
+import { descriptionFilter } from './descriptionConverter/descriptionFilter'
+import { LivePerk } from './descriptionConverter/livePerkInterface'
+import { database, inventoryItems } from './externalData'
+import { getDataFromPerk } from './descriptionConverter/converterFunctions/getDataFromPerk'
 
 export const databaseConverter = (converterType: string) => {
    const settings = getSettings(converterType)

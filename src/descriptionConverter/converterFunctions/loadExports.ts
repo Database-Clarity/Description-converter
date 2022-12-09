@@ -1,4 +1,4 @@
-import { database } from '../../utils/externalData'
+import { database } from '../../externalData'
 import { Languages } from '../interfaces'
 
 const getExports = (description: string) => {
