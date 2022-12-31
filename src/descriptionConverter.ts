@@ -1,4 +1,3 @@
-import { database } from '../externalData'
 import { doMath } from './converterFunctions/doMath'
 import { extractTitles } from './converterFunctions/extractTitles'
 import { loadExports } from './converterFunctions/loadExports'
@@ -11,7 +10,7 @@ import { DescriptionData, DescriptionLine } from './interfaces'
 const prepareDescription = (
    descriptionData : DescriptionData
 ) => {
-   const { language, hash } = descriptionData
+   const { language, hash, database } = descriptionData
    let description = loadExports(descriptionData)
 
    // removes enhanced/exotic perks and catalysts if perk is not enhanced/exotic perk or catalyst

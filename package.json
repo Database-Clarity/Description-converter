@@ -1,4 +1,13 @@
 {
+  "name": "@icemourne/description-converter",
+  "version": "1.0.0",
+  "main": "converter/descriptionConverter.js",
+  "author": "Icemourne",
+  "license": "MIT",
+  "description": "",
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
     "@icemourne/tool-box": "^1.0.4",
     "lodash": "^4.17.21"
@@ -7,15 +16,5 @@
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.11",
     "typescript": "^4.9.3"
-  },
-  "name": "description-converter",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "convert": "node converter/main.js"
-  },
-  "author": "Icemourne",
-  "license": "MIT",
-  "description": ""
+  }
 }
