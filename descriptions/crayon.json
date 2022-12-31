@@ -1,0 +1,14 @@
+{
+ "2010801679": {
+  "hash": 2010801679,
+  "name": "Ambitious Assassin",
+  "lastUpload": 1670275048646,
+  "type": "weaponPerk",
+  "uploadedBy": "Mistwalker",
+  "descriptions": {
+   "en": "Maxes out at 150% increased Magazine Capacity. Always rounds magazine up.\n\n<:primary:968793055677251604> Primary Weapons: 20% Increased Magazine Capacity per Kill.\n<:special:968793055631114330> Special and <:heavy:968793055652106320> Power Weapons: 10%.",
+   "es": "Puede llegar a ser un 150% la cantidad del cargador original. Redondea hacia arriba.",
+   "zh-chs": "最高过量填加 50%，计算结果向上取整。\n\n<:primary:968793055677251604> 主武器：每个击杀过量填加 20%。\n<:special:968793055631114330> 特殊武器和 <:heavy:968793055652106320> 重武器：每个击杀过量填加 10%。"
+  }
+ }
+}
