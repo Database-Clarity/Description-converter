@@ -54,7 +54,7 @@ export const languages = [
    ['zh-chs', 'Chinese (Simplified) - 简体中文'] as const
 ]
 
-export const languageKeys = languages.map(languageKey => languageKey[0])
+export const languageKeys = languages.map((languageKey) => languageKey[0])
 
 const textColoring = [
    'green' as const,
@@ -86,12 +86,21 @@ const images = [
    'titan' as const
 ]
 
+const table = [
+   'wide' as const,
+   'centerTable' as const,
+   'background_1' as const,
+   'background_2' as const,
+   'formula' as const
+]
+
 export const classNameList = {
    line: [...textColoring, 'background' as const, 'breakSpaces' as const],
    withText: [...textColoring, 'background' as const],
    empty: [...images],
    withExtraFunctionality: ['link' as const, 'title' as const, 'formula' as const],
-   extra: ['enhancedArrow' as const, 'spacer' as const]
+   extra: ['enhancedArrow' as const, 'spacer' as const],
+   table
 }
 
 export const allClassNames = Object.values(classNameList).flat()

@@ -1,5 +1,5 @@
 import { classNameList, weaponTypes } from '../data'
-import { DescriptionLine } from '../interfaces'
+import { DescriptionLine, TableClassNames } from '../interfaces'
 import { getLineClasses } from './extractClassesFromLine'
 import { convertLinesContent } from './lineConverter'
 import { splitTable } from './splitTable'
@@ -33,17 +33,17 @@ export const separateTableWeaponType = (description: string, titles: { [key: str
          tableLines.splice(-1)
          const firstLine = tableLines.splice(0, 1)
 
-         const tableClasses = ['wide', 'centerTable', 'background_1', 'background_2']
+         const tableClasses = classNameList.table
 
          const tableClassNames = firstLine[0]
             .replace(/< table | >/g, '')
             .match(/(\w+)/g)
-            ?.filter((string) => tableClasses.includes(string))
+            ?.filter((string) => tableClasses.includes(string as TableClassNames))
 
          acc.push({
             table: tableLines.flatMap((line) => splitTable(line, titles)),
             classNames: [...(tableClassNames || []), 'table'],
-            isFormula: firstLine[0].includes('formula')
+            isFormula: tableClassNames?.includes('formula')
          })
          return acc
       }

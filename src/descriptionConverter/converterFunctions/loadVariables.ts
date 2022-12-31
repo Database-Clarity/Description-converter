@@ -1,5 +1,4 @@
-import { database } from '../../externalData'
-import { Languages } from '../interfaces'
+import { DescriptionData } from '../interfaces'
 
 export const getVariables = (description: string) => {
    const variables = description.match(/^var [A-z0-9]+ = .+$/gm)
@@ -19,7 +18,10 @@ export const getVariables = (description: string) => {
    }, {} as { [key: string]: string })
 }
 
-export const loadVariables = (description: string, language: Languages): string => {
+export const loadVariables = (descriptionData : DescriptionData): string => {
+   const { language, descriptionString, database } = descriptionData
+   let description = descriptionString
+
    const getVariablesNames = (description: string) => {
       return description.match(/#[A-z0-9]+/g) || []
    }

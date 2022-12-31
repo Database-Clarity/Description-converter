@@ -1,25 +1,23 @@
-import { doMath } from './converterFunctions/doMath'
 import { database } from '../externalData'
+import { doMath } from './converterFunctions/doMath'
 import { extractTitles } from './converterFunctions/extractTitles'
 import { loadExports } from './converterFunctions/loadExports'
 import { loadVariables } from './converterFunctions/loadVariables'
 import { removePerkSpecificText } from './converterFunctions/removePerkSpecificText'
 import { removeUnusedText } from './converterFunctions/removeUnusedText'
 import { separateTableWeaponType } from './converterFunctions/separateTableWeaponType'
-import { DescriptionLine, Languages } from './interfaces'
+import { DescriptionData, DescriptionLine } from './interfaces'
 
 const prepareDescription = (
-   description: string,
-   editorType: 'main' | 'secondary',
-   language: Languages,
-   hash: number
+   descriptionData : DescriptionData
 ) => {
-   description = loadExports(description, editorType, language, hash)
+   const { language, hash } = descriptionData
+   let description = loadExports(descriptionData)
 
    // removes enhanced/exotic perks and catalysts if perk is not enhanced/exotic perk or catalyst
    description = removePerkSpecificText(description, database[hash].type)
 
-   description = loadVariables(description, language)
+   description = loadVariables(descriptionData)
    description = doMath(description)
 
    return {
@@ -32,17 +30,12 @@ const prepareDescription = (
    }
 }
 
-export const descriptionConverter = (
-   description: string,
-   editorType: 'main' | 'secondary',
-   language: Languages,
-   hash: number
-) => {
-   const { preparedDescription, titles } = prepareDescription(description, editorType, language, hash)
+export const descriptionConverter = (descriptionData : DescriptionData) => {
+   const { preparedDescription, titles } = prepareDescription(descriptionData)
 
    const convertedTitles = Object.entries(titles || {}).reduce<{ [key: string]: DescriptionLine[] }>(
       (acc, [titleName, titleContent]) => {
-         const { preparedDescription } = prepareDescription(titleContent, editorType, language, hash)
+         const { preparedDescription } = prepareDescription({ ...descriptionData, descriptionString: titleContent })
 
          const convertedTitles = separateTableWeaponType(preparedDescription, {})
          if (convertedTitles) acc[titleName] = convertedTitles

@@ -1,5 +1,4 @@
-import { database } from '../../externalData'
-import { Languages } from '../interfaces'
+import { DescriptionData } from '../interfaces'
 
 const getExports = (description: string) => {
    const exported = description.match(/^export [A-z0-9 ]+ \([\s\S]*?\n\)$/gm)
@@ -16,12 +15,10 @@ const getExports = (description: string) => {
    }, {} as { [key: string]: string })
 }
 
-export const loadExports = (
-   description: string,
-   editor: 'main' | 'secondary',
-   language: Languages,
-   hash: number
-): string => {
+export const loadExports = (descriptionData : DescriptionData): string => {
+   const { descriptionString, editorType, language, hash, database } = descriptionData
+   let description = descriptionString
+
    const getImports = (descriptionString: string) => {
       if (!descriptionString.includes('import')) return null
 
@@ -54,7 +51,7 @@ export const loadExports = (
 
    const replaceImports = (importsInDescription: { line: string; name: string; from: string }[]) => {
       importsInDescription.forEach(({ line, name, from }) => {
-         const editorToImportFrom = editor === 'main' ? 'secondary' : 'main'
+         const editorToImportFrom = editorType === 'main' ? 'secondary' : 'main'
 
          if (name === 'self') {
             description = description.replace(line, database[hash].editor[language]?.[editorToImportFrom].trim() || '')

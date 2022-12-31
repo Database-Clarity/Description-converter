@@ -1,7 +1,7 @@
 import { getSettings } from './converterSettings'
 import { AllClassNames, DescriptionLine } from './interfaces'
 import _ from 'lodash'
-import { cleanObject } from './converterFunctions/cleanObject'
+import { cleanObject } from '@icemourne/tool-box'
 
 export const cleanDescription = <T>(obj: T, converterType: string): T => {
    const { getFromDescription, enhancedArrowReplacement } = getSettings(converterType)

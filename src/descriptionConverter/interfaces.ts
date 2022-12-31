@@ -45,6 +45,15 @@ export type WeaponTypes = typeof weaponTypes[number]
 export type Languages = typeof languages[number][0]
 
 export type AllClassNames = typeof allClassNames[number]
+export type TableClassNames = typeof classNameList.table[number]
+
+export interface DescriptionData {
+   descriptionString: string
+   editorType: 'main' | 'secondary'
+   language: Languages
+   hash: number
+   database: Database
+}
 
 export interface Stat {
    weaponTypes?: WeaponTypes[]

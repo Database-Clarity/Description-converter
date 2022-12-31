@@ -34,6 +34,7 @@ export interface DescriptionFilter {
        */
       languages: Languages[] | undefined
    }
+
    getFromDescription: {
       /**
        ** Text snippet for example "range_0" they should be replaced with calculated stats

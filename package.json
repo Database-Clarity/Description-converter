@@ -1,12 +1,11 @@
 {
   "dependencies": {
-    "lodash": "^4.17.21",
-    "sync-fetch": "^0.4.2"
+    "@icemourne/tool-box": "^1.0.4",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.11",
-    "@types/sync-fetch": "^0.4.0",
     "typescript": "^4.9.3"
   },
   "name": "description-converter",
@@ -16,7 +15,7 @@
     "build": "tsc",
     "convert": "node converter/main.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Icemourne",
+  "license": "MIT",
   "description": ""
 }
