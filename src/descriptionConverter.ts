@@ -16,7 +16,7 @@ const prepareDescription = (
    // removes enhanced/exotic perks and catalysts if perk is not enhanced/exotic perk or catalyst
    description = removePerkSpecificText(description, database[hash].type)
 
-   description = loadVariables(descriptionData)
+   description = loadVariables({ ...descriptionData, descriptionString: description })
    description = doMath(description)
 
    return {

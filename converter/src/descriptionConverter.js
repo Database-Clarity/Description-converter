@@ -13,7 +13,7 @@ const prepareDescription = (descriptionData) => {
     let description = (0, loadExports_1.loadExports)(descriptionData);
     // removes enhanced/exotic perks and catalysts if perk is not enhanced/exotic perk or catalyst
     description = (0, removePerkSpecificText_1.removePerkSpecificText)(description, database[hash].type);
-    description = (0, loadVariables_1.loadVariables)(descriptionData);
+    description = (0, loadVariables_1.loadVariables)({ ...descriptionData, descriptionString: description });
     description = (0, doMath_1.doMath)(description);
     return {
         preparedDescription: (0, removeUnusedText_1.removeUnusedText)(description.trim()),
