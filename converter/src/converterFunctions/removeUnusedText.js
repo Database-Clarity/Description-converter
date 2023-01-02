@@ -13,7 +13,7 @@ const removeUnusedText = (description, removeTitle = true) => {
     // remove line with export name (
     description = description.replace(/^export .* \( *$\n/gm, '');
     // remove line with enhanced (
-    // description = description.replace(/^enhanced \($\n/gm, '')
+    description = description.replace(/^enhanced \($\n/gm, '');
     if (removeTitle) {
         // remove titles content
         description = description.replace(/\n?^title .+ \([^]*?\n\)$/gm, '');
