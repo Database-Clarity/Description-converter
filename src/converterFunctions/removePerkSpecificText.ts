@@ -7,9 +7,8 @@ export const removePerkSpecificText = (description: string, perkType: PerkTypes)
       enhancedExports.forEach((enhancedExport) => {
          description = description.replace(enhancedExport, '')
       })
+      description = description.replaceAll('#e', '')
    }
-
-   description = description.replaceAll('#e', '')
 
    const catalystExports = description.match(/^catalyst \([\s\S]*?\n\)$/gm)
 

@@ -7,8 +7,8 @@ const removePerkSpecificText = (description, perkType) => {
         enhancedExports.forEach((enhancedExport) => {
             description = description.replace(enhancedExport, '');
         });
+        description = description.replaceAll('#e', '');
     }
-    description = description.replaceAll('#e', '');
     const catalystExports = description.match(/^catalyst \([\s\S]*?\n\)$/gm);
     if (catalystExports && perkType !== 'Weapon Catalyst Exotic') {
         catalystExports.forEach((catalystExport) => {
