@@ -5,7 +5,7 @@
 /**
  ** Perk types are not the same as Bungie's
  */
-type PerkTypes =
+export type LivePerkTypes =
    | 'Armor Perk Exotic'
    | 'Weapon Perk Exotic'
    | 'Weapon Frame Exotic'
@@ -34,7 +34,7 @@ type PerkTypes =
 /**
  ** Stats names are not the same as Bungie's
  */
-type StatNames =
+export type StatNames =
    | 'Range'
    | 'Reload'
    | 'Handling'
@@ -51,7 +51,7 @@ type StatNames =
 /**
  ** Weapon types are not the same as Bungie's
  */
-type WeaponTypes =
+export type WeaponTypes =
    | 'AR' // Auto Rifle
    | 'Bow' // (Combat) Bow
    | 'Fusion' // Fusion Rifle
@@ -81,7 +81,7 @@ type WeaponTypes =
  ** Therefore, we have no way of validating the accuracy of the translation and are working purely on a good faith system with 0 tolerance for griefing.
  ** Please report any inaccuracies/issues to us directly.
  */
-type Languages =
+export type Languages =
    /** English - English */
    | 'en'
    /** German - Deutsch */
@@ -312,7 +312,7 @@ export interface LivePerk {
     ** Type of the perk as defined at the top
     ** Optional, only for organization purposes
     */
-   type: PerkTypes
+   type: LivePerkTypes
 
    /**
     ** Date in ms when the perk was last updated by us

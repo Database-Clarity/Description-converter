@@ -1,20 +1,6 @@
-import { allClassNames, classNameList, languages, statNames, weaponTypes } from './data';
-/**
- ** Where is little to no relation to Bungie perk types
- */
-export type PerkTypes = 'Armor Perk Exotic' | 'Weapon Perk Exotic' | 'Weapon Frame Exotic' | 'Weapon Catalyst Exotic' | 'Weapon Perk' | 'Weapon Perk Enhanced' | 'Weapon Origin Trait' | 'Weapon Frame' | 'Subclass Fragment' | 'Subclass Aspect' | 'Subclass Super' | 'Subclass Grenade' | 'Subclass Melee' | 'Subclass Class' | 'Subclass Movement' | 'Armor Mod General' | 'Armor Mod Combat' | 'Armor Mod Activity' | 'Armor Mod Seasonal' | 'Weapon Mod' | 'Ghost Mod';
-/**
- ** Where is little to no relation to Bungie stats
- */
-export type StatNames = typeof statNames[number];
-/**
- ** Where is little to no relation to Bungie weapon types
- */
-export type WeaponTypes = typeof weaponTypes[number];
-/**
- ** Languages are same us Bungie's
- */
-export type Languages = typeof languages[number][0];
+import { allClassNames, classNameList } from './data';
+import { Languages, LivePerkTypes, StatNames, WeaponTypes } from './livePerkInterface';
+export type PerkTypes = LivePerkTypes | 'none';
 export type AllClassNames = typeof allClassNames[number];
 export type TableClassNames = typeof classNameList.table[number];
 export interface DescriptionData {
@@ -44,13 +30,13 @@ export type Editor = {
         secondary: string;
     };
 };
-export interface Perk {
+export interface IntermediatePerk {
     hash: number;
     name: string;
     itemHash?: number;
     itemName?: string;
     uploadedBy: string;
-    type: PerkTypes;
+    type: LivePerkTypes | 'none';
     importStatsFrom?: number;
     linking?: {
         weaponPerkExotic?: number;
@@ -79,7 +65,7 @@ export interface Perk {
     uploadToLive: boolean;
 }
 export type Database = {
-    [key in string]: Perk;
+    [key in string]: IntermediatePerk;
 };
 export interface LinesContent {
     /** Text in this part of the line */

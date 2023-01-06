@@ -1,4 +1,5 @@
-import { AllClassNames, Languages } from './interfaces';
+import { AllClassNames } from './interfaces';
+import { Languages } from './livePerkInterface';
 export interface DescriptionFilter {
     getFromPerk: {
         /**

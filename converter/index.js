@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.converterSettings = exports.descriptionFilter = exports.getDataFromPerk = exports.getSettings = exports.descriptionConverter = void 0;
-const descriptionConverter_1 = require("./src/descriptionConverter");
-Object.defineProperty(exports, "descriptionConverter", { enumerable: true, get: function () { return descriptionConverter_1.descriptionConverter; } });
-const converterSettings_1 = require("./src/converterSettings");
-Object.defineProperty(exports, "getSettings", { enumerable: true, get: function () { return converterSettings_1.getSettings; } });
-Object.defineProperty(exports, "converterSettings", { enumerable: true, get: function () { return converterSettings_1.converterSettings; } });
 const getDataFromPerk_1 = require("./src/converterFunctions/getDataFromPerk");
 Object.defineProperty(exports, "getDataFromPerk", { enumerable: true, get: function () { return getDataFromPerk_1.getDataFromPerk; } });
+const converterSettings_1 = require("./src/converterSettings");
+Object.defineProperty(exports, "converterSettings", { enumerable: true, get: function () { return converterSettings_1.converterSettings; } });
+Object.defineProperty(exports, "getSettings", { enumerable: true, get: function () { return converterSettings_1.getSettings; } });
+const descriptionConverter_1 = require("./src/descriptionConverter");
+Object.defineProperty(exports, "descriptionConverter", { enumerable: true, get: function () { return descriptionConverter_1.descriptionConverter; } });
 const descriptionFilter_1 = require("./src/descriptionFilter");
 Object.defineProperty(exports, "descriptionFilter", { enumerable: true, get: function () { return descriptionFilter_1.descriptionFilter; } });

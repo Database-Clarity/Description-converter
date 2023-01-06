@@ -1,15 +1,15 @@
 /**
  ** Perk types are not the same as Bungie's
  */
-type PerkTypes = 'Armor Perk Exotic' | 'Weapon Perk Exotic' | 'Weapon Frame Exotic' | 'Weapon Catalyst Exotic' | 'Weapon Perk' | 'Weapon Perk Enhanced' | 'Weapon Origin Trait' | 'Weapon Frame' | 'Subclass Fragment' | 'Subclass Aspect' | 'Subclass Super' | 'Subclass Grenade' | 'Subclass Melee' | 'Subclass Class' | 'Subclass Movement' | 'Armor Mod General' | 'Armor Mod Combat' | 'Armor Mod Activity' | 'Armor Mod Seasonal' | 'Weapon Mod' | 'Ghost Mod';
+export type LivePerkTypes = 'Armor Perk Exotic' | 'Weapon Perk Exotic' | 'Weapon Frame Exotic' | 'Weapon Catalyst Exotic' | 'Weapon Perk' | 'Weapon Perk Enhanced' | 'Weapon Origin Trait' | 'Weapon Frame' | 'Subclass Fragment' | 'Subclass Aspect' | 'Subclass Super' | 'Subclass Grenade' | 'Subclass Melee' | 'Subclass Class' | 'Subclass Movement' | 'Armor Mod General' | 'Armor Mod Combat' | 'Armor Mod Activity' | 'Armor Mod Seasonal' | 'Weapon Mod' | 'Ghost Mod';
 /**
  ** Stats names are not the same as Bungie's
  */
-type StatNames = 'Range' | 'Reload' | 'Handling' | 'Stability' | 'Zoom' | 'Aim Assist' | 'Charge Draw' | 'RPM' | 'Ready' | 'Stow' | 'Damage' | 'Airborne';
+export type StatNames = 'Range' | 'Reload' | 'Handling' | 'Stability' | 'Zoom' | 'Aim Assist' | 'Charge Draw' | 'RPM' | 'Ready' | 'Stow' | 'Damage' | 'Airborne';
 /**
  ** Weapon types are not the same as Bungie's
  */
-type WeaponTypes = 'AR' | 'Bow' | 'Fusion' | 'Glaive' | 'GL' | 'HC' | 'Heavy GL' | 'LFR' | 'LMG' | 'Pulse' | 'Rocket' | 'Scout' | 'Shotgun' | 'Sidearm' | 'Sniper' | 'SMG' | 'Sword' | 'Trace'
+export type WeaponTypes = 'AR' | 'Bow' | 'Fusion' | 'Glaive' | 'GL' | 'HC' | 'Heavy GL' | 'LFR' | 'LMG' | 'Pulse' | 'Rocket' | 'Scout' | 'Shotgun' | 'Sidearm' | 'Sniper' | 'SMG' | 'Sword' | 'Trace'
 /** Ability "WeaponTypes" are generally used for ability damage increases from mods/exotics */
  | 'Super' | 'Grenade' | 'Melee';
 /**
@@ -18,7 +18,7 @@ type WeaponTypes = 'AR' | 'Bow' | 'Fusion' | 'Glaive' | 'GL' | 'HC' | 'Heavy GL'
  ** Therefore, we have no way of validating the accuracy of the translation and are working purely on a good faith system with 0 tolerance for griefing.
  ** Please report any inaccuracies/issues to us directly.
  */
-type Languages = 
+export type Languages = 
 /** English - English */
 'en'
 /** German - Deutsch */
@@ -213,7 +213,7 @@ export interface LivePerk {
      ** Type of the perk as defined at the top
      ** Optional, only for organization purposes
      */
-    type: PerkTypes;
+    type: LivePerkTypes;
     /**
      ** Date in ms when the perk was last updated by us
      ** Optional

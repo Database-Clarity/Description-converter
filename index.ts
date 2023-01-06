@@ -1,9 +1,9 @@
-import { descriptionConverter } from './src/descriptionConverter'
-import { getSettings, converterSettings } from './src/converterSettings'
 import { getDataFromPerk } from './src/converterFunctions/getDataFromPerk'
+import { converterSettings, getSettings } from './src/converterSettings'
+import { descriptionConverter } from './src/descriptionConverter'
 import { descriptionFilter } from './src/descriptionFilter'
-import { LivePerk } from './src/livePerkInterface'
-import { Database, Languages, PerkTypes, StatNames, WeaponTypes, DescriptionData } from './src/interfaces'
+import { Database, DescriptionData, IntermediatePerk, PerkTypes } from './src/interfaces'
+import { Languages, LivePerk, StatNames, WeaponTypes } from './src/livePerkInterface'
 
 export {
    descriptionConverter,
@@ -17,5 +17,7 @@ export {
    PerkTypes,
    StatNames,
    WeaponTypes,
-   DescriptionData
+   DescriptionData,
+   IntermediatePerk
 }
+

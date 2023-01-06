@@ -1,57 +1,59 @@
-export const statNames = [
-   'Range' as const,
-   'Reload' as const,
-   'Handling' as const,
-   'Stability' as const,
-   'Zoom' as const,
-   'Aim Assist' as const,
-   'Charge Draw' as const,
-   'RPM' as const,
-   'Ready' as const,
-   'Stow' as const,
-   'Damage' as const,
-   'Airborne' as const
+import { Languages, StatNames, WeaponTypes } from './livePerkInterface'
+
+export const statNames: StatNames[] = [
+   'Range',
+   'Reload',
+   'Handling',
+   'Stability',
+   'Zoom',
+   'Aim Assist',
+   'Charge Draw',
+   'RPM',
+   'Ready',
+   'Stow',
+   'Damage',
+   'Airborne'
 ]
 
-export const weaponTypes = [
-   'AR' as const,
-   'Bow' as const,
-   'Fusion' as const,
-   'Glaive' as const,
-   'GL' as const,
-   'HC' as const,
-   'Heavy GL' as const,
-   'LFR' as const,
-   'LMG' as const,
-   'Pulse' as const,
-   'Rocket' as const,
-   'Scout' as const,
-   'Shotgun' as const,
-   'Sidearm' as const,
-   'Sniper' as const,
-   'SMG' as const,
-   'Sword' as const,
-   'Trace' as const,
+export const weaponTypes: WeaponTypes[] = [
+   'AR',
+   'Bow',
+   'Fusion',
+   'Glaive',
+   'GL',
+   'HC',
+   'Heavy GL',
+   'LFR',
+   'LMG',
+   'Pulse',
+   'Rocket',
+   'Scout',
+   'Shotgun',
+   'Sidearm',
+   'Sniper',
+   'SMG',
+   'Sword',
+   'Trace',
    // ---------
-   'Super' as const,
-   'Grenade' as const,
-   'Melee' as const
+   'Super',
+   'Grenade',
+   'Melee'
 ]
 
-export const languages = [
-   ['en', 'English'] as const,
-   ['de', 'German - Deutsch'] as const,
-   ['fr', 'French - Français'] as const,
-   ['it', 'Italian - Italiano'] as const,
-   ['pl', 'Polish - Polski'] as const,
-   ['ru', 'Russian - Русский'] as const,
-   ['es', 'Spanish (Spain) - Español (España)'] as const,
-   ['es-mx', 'Spanish (Mexico) - Español (México)'] as const,
-   ['ko', 'Korean - 한국어'] as const,
-   ['pt-rb', 'Portuguese (Brazil) - Português (Brasil)'] as const,
-   ['ja', 'Japanese - 日本語'] as const,
-   ['zh-cht', 'Chinese (Traditional) - 繁體中文'] as const,
-   ['zh-chs', 'Chinese (Simplified) - 简体中文'] as const
+export const languages: [Languages, string][] = [
+   ['en', 'English'],
+   ['de', 'German - Deutsch'],
+   ['fr', 'French - Français'],
+   ['it', 'Italian - Italiano'],
+   ['pl', 'Polish - Polski'],
+   ['ru', 'Russian - Русский'],
+   ['es', 'Spanish (Spain) - Español (España)'],
+   ['es-mx', 'Spanish (Mexico) - Español (México)'],
+   ['ko', 'Korean - 한국어'],
+   ['pt-rb', 'Portuguese (Brazil) - Português (Brasil)'],
+   ['ja', 'Japanese - 日本語'],
+   ['zh-cht', 'Chinese (Traditional) - 繁體中文'],
+   ['zh-chs', 'Chinese (Simplified) - 简体中文']
 ]
 
 export const languageKeys = languages.map((languageKey) => languageKey[0])

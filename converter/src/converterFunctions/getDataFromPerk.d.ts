@@ -1,6 +1,6 @@
 import { DescriptionFilter } from '../converterSettings';
-import { Perk } from '../interfaces';
-export declare const getDataFromPerk: (perk: Perk, filters: DescriptionFilter['getFromPerk']) => {
+import { IntermediatePerk } from '../interfaces';
+export declare const getDataFromPerk: (perk: IntermediatePerk, filters: DescriptionFilter['getFromPerk']) => {
     editor: Partial<import("../interfaces").Editor>;
     updateTracker: {
         descriptions: Partial<{
@@ -67,7 +67,7 @@ export declare const getDataFromPerk: (perk: Perk, filters: DescriptionFilter['g
     itemHash?: number | undefined;
     itemName?: string | undefined;
     uploadedBy?: string | undefined;
-    type?: import("../interfaces").PerkTypes | undefined;
+    type?: import("../livePerkInterface").LivePerkTypes | "none" | undefined;
     importStatsFrom?: number | undefined;
     linking?: {
         weaponPerkExotic?: number | undefined;

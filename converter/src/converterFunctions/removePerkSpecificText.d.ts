@@ -1,2 +1,2 @@
-import { PerkTypes } from "../interfaces";
-export declare const removePerkSpecificText: (description: string, perkType: PerkTypes) => string;
+import { LivePerkTypes } from "../livePerkInterface";
+export declare const removePerkSpecificText: (description: string, perkType: LivePerkTypes | 'none') => string;

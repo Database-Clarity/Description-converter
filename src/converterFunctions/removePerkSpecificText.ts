@@ -1,6 +1,6 @@
-import { PerkTypes } from "../interfaces"
+import { LivePerkTypes } from "../livePerkInterface"
 
-export const removePerkSpecificText = (description: string, perkType: PerkTypes) => {
+export const removePerkSpecificText = (description: string, perkType: LivePerkTypes | 'none') => {
    const enhancedExports = description.match(/^enhanced \([\s\S]*?\n\)$/gm)
 
    if (enhancedExports && perkType !== 'Weapon Perk Enhanced') {
