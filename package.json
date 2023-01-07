@@ -1,6 +1,6 @@
 {
   "name": "@icemourne/description-converter",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "main": "converter/index.js",
   "author": "Icemourne",
   "license": "MIT",
