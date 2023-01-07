@@ -42,7 +42,7 @@ export interface IntermediatePerk {
    itemHash?: number
    itemName?: string
    uploadedBy: string
-   type: LivePerkTypes | 'none'
+   type: PerkTypes
    importStatsFrom?: number
    linking?: {
       weaponPerkExotic?: number
@@ -50,7 +50,6 @@ export interface IntermediatePerk {
       weaponCatalystExotic?: number
       weaponPerkEnhanced?: number
    }
-   // linkedWith?: number | undefined
    updateTracker: {
       stats?: {
          lastUpdate: number

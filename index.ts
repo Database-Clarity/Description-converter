@@ -15,6 +15,7 @@ import {
    PerkTypes,
    RowContent,
    Stat,
+   Stats,
    TableLine
 } from './src/interfaces'
 import { Languages, LivePerk, StatNames, WeaponTypes } from './src/livePerkInterface'
@@ -38,6 +39,7 @@ export {
    DescriptionData,
    IntermediatePerk,
    Stat,
+   Stats,
    // ---
    LinesContent,
    CellContent,
