@@ -1,6 +1,6 @@
 {
   "name": "@icemourne/description-converter",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "main": "converter/index.js",
   "author": "Icemourne",
   "license": "MIT",
@@ -9,7 +9,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@icemourne/tool-box": "^1.0.12",
+    "@icemourne/tool-box": "^1.0.13",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
