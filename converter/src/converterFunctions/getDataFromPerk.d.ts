@@ -67,13 +67,13 @@ export declare const getDataFromPerk: (perk: IntermediatePerk, filters: Descript
     itemHash?: number | undefined;
     itemName?: string | undefined;
     uploadedBy?: string | undefined;
-    type?: import("../livePerkInterface").LivePerkTypes | "none" | undefined;
+    type?: import("../interfaces").PerkTypes | undefined;
     importStatsFrom?: number | undefined;
     linking?: {
-        weaponPerkExotic?: number | undefined;
-        weaponFrameExotic?: number | undefined;
-        weaponCatalystExotic?: number | undefined;
-        weaponPerkEnhanced?: number | undefined;
+        'Weapon Perk Exotic'?: number | undefined;
+        'Weapon Frame Exotic'?: number | undefined;
+        'Weapon Catalyst Exotic'?: number | undefined;
+        'Weapon Perk Enhanced'?: number | undefined;
     } | undefined;
     stats?: import("../interfaces").Stats | undefined;
     lastUpload?: number | undefined;

@@ -1,5 +1,5 @@
-import { allClassNames, classNameList } from './data'
 import { Languages, LivePerkTypes, StatNames, WeaponTypes } from './livePerkInterface'
+import { allClassNames, classNameList } from './data'
 
 export type PerkTypes = LivePerkTypes | 'none'
 
@@ -45,10 +45,10 @@ export interface IntermediatePerk {
    type: PerkTypes
    importStatsFrom?: number
    linking?: {
-      weaponPerkExotic?: number
-      weaponFrameExotic?: number
-      weaponCatalystExotic?: number
-      weaponPerkEnhanced?: number
+      'Weapon Perk Exotic'?: number
+      'Weapon Frame Exotic'?: number
+      'Weapon Catalyst Exotic'?: number
+      'Weapon Perk Enhanced'?: number
    }
    updateTracker: {
       stats?: {
