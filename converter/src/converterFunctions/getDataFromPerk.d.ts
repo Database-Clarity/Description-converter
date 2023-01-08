@@ -70,10 +70,10 @@ export declare const getDataFromPerk: (perk: IntermediatePerk, filters: Descript
     type?: import("../interfaces").PerkTypes | undefined;
     importStatsFrom?: number | undefined;
     linking?: {
-        'Weapon Perk Exotic'?: number | undefined;
-        'Weapon Frame Exotic'?: number | undefined;
-        'Weapon Catalyst Exotic'?: number | undefined;
-        'Weapon Perk Enhanced'?: number | undefined;
+        "Weapon Perk Exotic"?: number | undefined;
+        "Weapon Frame Exotic"?: number | undefined;
+        "Weapon Catalyst Exotic"?: number | undefined;
+        "Weapon Perk Enhanced"?: number | undefined;
     } | undefined;
     stats?: import("../interfaces").Stats | undefined;
     lastUpload?: number | undefined;

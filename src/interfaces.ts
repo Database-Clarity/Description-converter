@@ -36,6 +36,8 @@ export type Editor = {
    }
 }
 
+export type PossiblePerkLinks = 'Weapon Perk Exotic' | 'Weapon Frame Exotic' | 'Weapon Catalyst Exotic' | 'Weapon Perk Enhanced'
+
 export interface IntermediatePerk {
    hash: number
    name: string
@@ -45,10 +47,7 @@ export interface IntermediatePerk {
    type: PerkTypes
    importStatsFrom?: number
    linking?: {
-      'Weapon Perk Exotic'?: number
-      'Weapon Frame Exotic'?: number
-      'Weapon Catalyst Exotic'?: number
-      'Weapon Perk Enhanced'?: number
+      [key in PossiblePerkLinks]?: number
    }
    updateTracker: {
       stats?: {
