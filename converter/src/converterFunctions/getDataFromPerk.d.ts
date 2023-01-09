@@ -69,7 +69,7 @@ export declare const getDataFromPerk: (perk: IntermediatePerk, filters: Descript
     uploadedBy?: string | undefined;
     type?: import("../interfaces").PerkTypes | undefined;
     importStatsFrom?: number | undefined;
-    linking?: {
+    linkedWith?: {
         "Weapon Perk Exotic"?: number | undefined;
         "Weapon Frame Exotic"?: number | undefined;
         "Weapon Catalyst Exotic"?: number | undefined;

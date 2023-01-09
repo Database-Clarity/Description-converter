@@ -39,7 +39,7 @@ export interface IntermediatePerk {
     uploadedBy: string;
     type: PerkTypes;
     importStatsFrom?: number;
-    linking?: {
+    linkedWith?: {
         [key in PossiblePerkLinks]?: number;
     };
     updateTracker: {

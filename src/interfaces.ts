@@ -36,7 +36,11 @@ export type Editor = {
    }
 }
 
-export type PossiblePerkLinks = 'Weapon Perk Exotic' | 'Weapon Frame Exotic' | 'Weapon Catalyst Exotic' | 'Weapon Perk Enhanced'
+export type PossiblePerkLinks =
+   | 'Weapon Perk Exotic'
+   | 'Weapon Frame Exotic'
+   | 'Weapon Catalyst Exotic'
+   | 'Weapon Perk Enhanced'
 
 export interface IntermediatePerk {
    hash: number
