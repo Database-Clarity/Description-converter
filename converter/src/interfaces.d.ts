@@ -30,7 +30,7 @@ export type Editor = {
         secondary: string;
     };
 };
-export type PossiblePerkLinks = 'Weapon Perk Exotic' | 'Weapon Frame Exotic' | 'Weapon Catalyst Exotic' | 'Weapon Perk Enhanced';
+export type PossiblePerkLinks = 'Weapon Perk Exotic' | 'Weapon Frame Exotic' | 'Weapon Catalyst Exotic' | 'Weapon Perk Enhanced' | 'Weapon Perk';
 export interface IntermediatePerk {
     hash: number;
     name: string;

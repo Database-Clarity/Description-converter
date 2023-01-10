@@ -41,6 +41,7 @@ export type PossiblePerkLinks =
    | 'Weapon Frame Exotic'
    | 'Weapon Catalyst Exotic'
    | 'Weapon Perk Enhanced'
+   | 'Weapon Perk'
 
 export interface IntermediatePerk {
    hash: number
