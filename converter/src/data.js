@@ -87,10 +87,15 @@ const table = [
     'background_2',
     'formula'
 ];
+const empty = [
+    'background',
+    'breakSpaces',
+    'bold',
+];
 exports.classNameList = {
-    line: [...textColoring, 'background', 'breakSpaces'],
-    withText: [...textColoring, 'background'],
-    empty: [...images],
+    line: [...textColoring, ...empty],
+    withText: [...textColoring, 'background', 'bold'],
+    empty: [...images, ...empty],
     withExtraFunctionality: ['link', 'title', 'formula'],
     extra: ['enhancedArrow', 'spacer'],
     table

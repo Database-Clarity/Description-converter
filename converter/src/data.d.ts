@@ -6,7 +6,7 @@ export declare const languageKeys: Languages[];
 export declare const classNameList: {
     line: ("green" | "blue" | "purple" | "yellow" | "center" | "bold" | "pve" | "pvp" | "background" | "breakSpaces")[];
     withText: ("green" | "blue" | "purple" | "yellow" | "center" | "bold" | "pve" | "pvp" | "background")[];
-    empty: ("stasis" | "arc" | "solar" | "void" | "primary" | "special" | "heavy" | "barrier" | "overload" | "unstoppable" | "warlock" | "hunter" | "titan")[];
+    empty: ("bold" | "stasis" | "arc" | "solar" | "void" | "primary" | "special" | "heavy" | "barrier" | "overload" | "unstoppable" | "warlock" | "hunter" | "titan" | "background" | "breakSpaces")[];
     withExtraFunctionality: ("formula" | "link" | "title")[];
     extra: ("enhancedArrow" | "spacer")[];
     table: ("wide" | "centerTable" | "background_1" | "background_2" | "formula")[];

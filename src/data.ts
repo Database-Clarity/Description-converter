@@ -96,10 +96,16 @@ const table = [
    'formula' as const
 ]
 
+const empty = [
+   'background' as const,
+   'breakSpaces' as const,
+   'bold' as const,
+]
+
 export const classNameList = {
-   line: [...textColoring, 'background' as const, 'breakSpaces' as const],
-   withText: [...textColoring, 'background' as const],
-   empty: [...images],
+   line: [...textColoring, ...empty],
+   withText: [...textColoring, 'background' as const, 'bold' as const],
+   empty: [...images, ...empty],
    withExtraFunctionality: ['link' as const, 'title' as const, 'formula' as const],
    extra: ['enhancedArrow' as const, 'spacer' as const],
    table
