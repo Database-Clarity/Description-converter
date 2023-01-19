@@ -17,12 +17,19 @@ jobs:
         with:
           node-version: 18.x
 
-      - name: Install and Build 🔧
+      - name: Install 🔧
         run: |
           npm ci
-          npm version patch
           npm i @icemourne/tool-box @icemourne/description-converter
+
+      - name: Build
+        run: |
           npm run build
+
+      - name: Version up
+        run: |
+          git add .
+          npm version patch
 
       # - name: Publish 📦
       #   uses: JS-DevTools/npm-publish@v1
