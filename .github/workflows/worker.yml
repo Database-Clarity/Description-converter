@@ -33,6 +33,9 @@ jobs:
           git add .
           git commit -m "Version up"
           npm version patch
+
+      - name: Update repository 📦
+        run: |
           git push
 
       - name: Publish 📦
