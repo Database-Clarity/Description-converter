@@ -96,11 +96,7 @@ const table = [
    'formula' as const
 ]
 
-const empty = [
-   'background' as const,
-   'breakSpaces' as const,
-   'bold' as const,
-]
+const empty = ['background' as const, 'breakSpaces' as const, 'bold' as const]
 
 export const classNameList = {
    line: [...textColoring, ...empty],

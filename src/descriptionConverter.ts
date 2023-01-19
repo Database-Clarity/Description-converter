@@ -1,3 +1,5 @@
+import { DescriptionData, DescriptionLine } from './interfaces'
+
 import { doMath } from './converterFunctions/doMath'
 import { extractTitles } from './converterFunctions/extractTitles'
 import { loadExports } from './converterFunctions/loadExports'
@@ -5,11 +7,8 @@ import { loadVariables } from './converterFunctions/loadVariables'
 import { removePerkSpecificText } from './converterFunctions/removePerkSpecificText'
 import { removeUnusedText } from './converterFunctions/removeUnusedText'
 import { separateTableWeaponType } from './converterFunctions/separateTableWeaponType'
-import { DescriptionData, DescriptionLine } from './interfaces'
 
-const prepareDescription = (
-   descriptionData : DescriptionData
-) => {
+const prepareDescription = (descriptionData: DescriptionData) => {
    const { language, hash, database } = descriptionData
    let description = loadExports(descriptionData)
 
@@ -29,7 +28,7 @@ const prepareDescription = (
    }
 }
 
-export const descriptionConverter = (descriptionData : DescriptionData) => {
+export const descriptionConverter = (descriptionData: DescriptionData) => {
    const { preparedDescription, titles } = prepareDescription(descriptionData)
 
    const convertedTitles = Object.entries(titles || {}).reduce<{ [key: string]: DescriptionLine[] }>(
