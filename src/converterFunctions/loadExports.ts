@@ -15,7 +15,7 @@ const getExports = (description: string) => {
    }, {} as { [key: string]: string })
 }
 
-export const loadExports = (descriptionData : DescriptionData): string => {
+export const loadExports = (descriptionData: DescriptionData): string => {
    const { descriptionString, editorType, language, hash, database } = descriptionData
    let description = descriptionString
 

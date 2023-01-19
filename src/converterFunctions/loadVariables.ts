@@ -18,7 +18,7 @@ export const getVariables = (description: string) => {
    }, {} as { [key: string]: string })
 }
 
-export const loadVariables = (descriptionData : DescriptionData): string => {
+export const loadVariables = (descriptionData: DescriptionData): string => {
    const { language, descriptionString, database } = descriptionData
    let description = descriptionString
 

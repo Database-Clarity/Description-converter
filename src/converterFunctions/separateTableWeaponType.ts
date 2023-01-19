@@ -1,8 +1,10 @@
-import { classNameList, weaponTypes } from '../data'
 import { DescriptionLine, TableClassNames } from '../interfaces'
-import { getLineClasses } from './extractClassesFromLine'
+import { classNameList, weaponTypes } from '../data'
+
 import { convertLinesContent } from './lineConverter'
+import { getLineClasses } from './extractClassesFromLine'
 import { splitTable } from './splitTable'
+
 /*
    (
       < table [^]+?\n<\$>\n?
@@ -65,9 +67,7 @@ export const separateTableWeaponType = (description: string, titles: { [key: str
 
             separateTableWeaponType(weaponLines.join('\n'), titles)?.forEach((line) => {
                acc.push({
-                  weaponTypes: currentWeaponTypes.includes('other')
-                     ? notSelectedWeaponTypes
-                     : currentWeaponTypes,
+                  weaponTypes: currentWeaponTypes.includes('other') ? notSelectedWeaponTypes : currentWeaponTypes,
                   ...line
                })
             })

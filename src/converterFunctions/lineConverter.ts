@@ -1,5 +1,6 @@
-import { classNameList } from '../data'
 import { CellContent, DescriptionLine, LinesContent } from '../interfaces'
+
+import { classNameList } from '../data'
 
 export const convertLinesContent = (line: string, tiles: { [key: string]: DescriptionLine[] }) => {
    const splittedLine = line.split(/(<.+?\/>|🡅)/g).filter((line) => line !== '')
