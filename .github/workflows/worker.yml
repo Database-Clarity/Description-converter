@@ -34,9 +34,8 @@ jobs:
 
       - name: commit to github repository
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name Icemourne
+          git config user.email cboweris@gmail.com
           git add .
           git commit -m "update version"
           git push
-          
