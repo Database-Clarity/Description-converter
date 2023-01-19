@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.separateTableWeaponType = void 0;
 const data_1 = require("../data");
-const extractClassesFromLine_1 = require("./extractClassesFromLine");
 const lineConverter_1 = require("./lineConverter");
+const extractClassesFromLine_1 = require("./extractClassesFromLine");
 const splitTable_1 = require("./splitTable");
 /*
    (
@@ -58,9 +58,7 @@ const separateTableWeaponType = (description, titles) => {
                 notSelectedWeaponTypes = notSelectedWeaponTypes.filter((type) => !currentWeaponTypes.includes(type));
                 (0, exports.separateTableWeaponType)(weaponLines.join('\n'), titles)?.forEach((line) => {
                     acc.push({
-                        weaponTypes: currentWeaponTypes.includes('other')
-                            ? notSelectedWeaponTypes
-                            : currentWeaponTypes,
+                        weaponTypes: currentWeaponTypes.includes('other') ? notSelectedWeaponTypes : currentWeaponTypes,
                         ...line
                     });
                 });

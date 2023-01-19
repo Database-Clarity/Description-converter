@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.splitTable = void 0;
 const data_1 = require("../data");
-const extractClassesFromLine_1 = require("./extractClassesFromLine");
 const lineConverter_1 = require("./lineConverter");
+const extractClassesFromLine_1 = require("./extractClassesFromLine");
 const splitTable = (line, title) => {
     const { classNames, cleanLine } = (0, extractClassesFromLine_1.getLineClasses)(line, data_1.classNameList.empty);
     // line splitted on |

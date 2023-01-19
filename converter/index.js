@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.statNames = exports.weaponTypes = exports.converterSettings = exports.getVariables = exports.extractTitles = exports.descriptionFilter = exports.getDataFromPerk = exports.getSettings = exports.descriptionConverter = void 0;
+exports.languageKeys = exports.statNames = exports.weaponTypes = exports.converterSettings = exports.getVariables = exports.extractTitles = exports.descriptionFilter = exports.getDataFromPerk = exports.getSettings = exports.descriptionConverter = void 0;
 const converterSettings_1 = require("./src/converterSettings");
 Object.defineProperty(exports, "converterSettings", { enumerable: true, get: function () { return converterSettings_1.converterSettings; } });
 Object.defineProperty(exports, "getSettings", { enumerable: true, get: function () { return converterSettings_1.getSettings; } });
 const data_1 = require("./src/data");
+Object.defineProperty(exports, "languageKeys", { enumerable: true, get: function () { return data_1.languageKeys; } });
 Object.defineProperty(exports, "statNames", { enumerable: true, get: function () { return data_1.statNames; } });
 Object.defineProperty(exports, "weaponTypes", { enumerable: true, get: function () { return data_1.weaponTypes; } });
 const descriptionConverter_1 = require("./src/descriptionConverter");
