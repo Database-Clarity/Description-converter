@@ -3,6 +3,7 @@ import {
    Database,
    DescriptionData,
    DescriptionLine,
+   Editor,
    IntermediatePerk,
    LinesContent,
    PerkTypes,
@@ -14,7 +15,7 @@ import {
 } from './src/interfaces'
 import { Languages, LivePerk, StatNames, WeaponTypes } from './src/livePerkInterface'
 import { converterSettings, getSettings } from './src/converterSettings'
-import { statNames, weaponTypes } from './src/data'
+import { languageKeys, statNames, weaponTypes } from './src/data'
 
 import { descriptionConverter } from './src/descriptionConverter'
 import { descriptionFilter } from './src/descriptionFilter'
@@ -32,6 +33,7 @@ export {
    converterSettings,
    weaponTypes,
    statNames,
+   languageKeys,
    LivePerk,
    Database,
    Languages,
@@ -43,6 +45,7 @@ export {
    Stat,
    Stats,
    PossiblePerkLinks,
+   Editor,
    // ---
    LinesContent,
    CellContent,
