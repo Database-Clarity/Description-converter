@@ -31,9 +31,8 @@ jobs:
           git config --global user.email "cboweris@gmail.com"
           git config --global user.name "Ice-mourne"
           git add .
-          git commit
+          git commit -m "Version up"
           npm version patch
-          git commit
 
       # - name: Publish 📦
       #   uses: JS-DevTools/npm-publish@v1
