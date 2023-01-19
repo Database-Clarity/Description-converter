@@ -29,7 +29,9 @@ jobs:
       - name: Version up
         run: |
           git add .
+          git commit
           npm version patch
+          git commit
 
       # - name: Publish 📦
       #   uses: JS-DevTools/npm-publish@v1
