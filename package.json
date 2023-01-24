@@ -4,6 +4,7 @@
   "exports": {
     ".": "./index.js"
   },
+  "main": "converter/index.ts",
   "author": "Icemourne",
   "license": "MIT",
   "description": "",
@@ -11,7 +12,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@icemourne/description-converter": "^1.0.24",
+    "@icemourne/description-converter": "^1.0.26",
     "@icemourne/tool-box": "^1.0.23",
     "lodash": "^4.17.21"
   },
