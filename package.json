@@ -1,7 +1,9 @@
 {
   "name": "@icemourne/description-converter",
   "version": "1.0.25",
-  "main": "converter/index.ts",
+  "exports": {
+    ".": "./index.js"
+  },
   "author": "Icemourne",
   "license": "MIT",
   "description": "",

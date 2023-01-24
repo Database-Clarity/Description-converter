@@ -1,4 +1,4 @@
-name: Build and Deploy to NPM
+name: Update version and Deploy to NPM
 
 on:
   push:
