@@ -1,4 +1,4 @@
-import { Languages, LivePerkTypes, StatNames, WeaponTypes } from './livePerkInterface'
+import { Languages, LivePerkTypes, StatNames, WeaponTypes } from './livePerkTypes'
 import { allClassNames, classNameList } from './data'
 
 export type PerkTypes = LivePerkTypes | 'none'
@@ -6,7 +6,7 @@ export type PerkTypes = LivePerkTypes | 'none'
 export type AllClassNames = typeof allClassNames[number]
 export type TableClassNames = typeof classNameList.table[number]
 
-export interface DescriptionData {
+export type DescriptionData = {
    descriptionString: string
    editorType: 'main' | 'secondary'
    language: Languages
@@ -14,7 +14,7 @@ export interface DescriptionData {
    database: Database
 }
 
-export interface Stat {
+export type Stat = {
    weaponTypes?: WeaponTypes[]
    active?: {
       multiplier?: number[]
@@ -36,14 +36,7 @@ export type Editor = {
    }
 }
 
-export type PossiblePerkLinks =
-   | 'Weapon Perk Exotic'
-   | 'Weapon Frame Exotic'
-   | 'Weapon Catalyst Exotic'
-   | 'Weapon Perk Enhanced'
-   | 'Weapon Perk'
-
-export interface IntermediatePerk {
+export type IntermediatePerk = {
    hash: number
    name: string
    itemHash?: number
@@ -51,9 +44,7 @@ export interface IntermediatePerk {
    uploadedBy: string
    type: PerkTypes
    importStatsFrom?: number
-   linkedWith?: {
-      [key in PossiblePerkLinks]?: number
-   }
+   linkedWith?: number
    updateTracker: {
       stats?: {
          lastUpdate: number
@@ -70,15 +61,13 @@ export interface IntermediatePerk {
    stats?: Stats
    lastUpload: number
    inLiveDatabase: boolean
-   optional: boolean
-   hidden: boolean
    uploadToLive: boolean
 }
 export type Database = {
    [key in string]: IntermediatePerk
 }
 
-export interface LinesContent {
+export type LinesContent = {
    /** Text in this part of the line */
    text?: string
    /** Class names of this parts of the line */
@@ -91,7 +80,7 @@ export interface LinesContent {
    title?: DescriptionLine[]
 }
 
-export interface CellContent {
+export type CellContent = {
    /** Text in this part of the cell \<span> */
    text?: string
    /** this will be moved from hare when converting description */
@@ -111,7 +100,7 @@ export interface CellContent {
 }
 
 /** Contents of table row \<tr> aka array of cells */
-export interface RowContent {
+export type RowContent = {
    /** Contents of cell \<td> aka array of spans \<span> */
    cellContent: CellContent[]
    /** Number of cell to span horizontally */
@@ -122,14 +111,14 @@ export interface RowContent {
    classNames?: (string | undefined)[]
 }
 
-export interface TableLine {
+export type TableLine = {
    /** Contents of table row \<tr> aka array of cells */
    rowContent?: RowContent[]
    /** row \<tr> classNames */
    classNames?: (string | undefined)[]
 }
 
-export interface DescriptionLine {
+export type DescriptionLine = {
    /** Lines \<div> class names */
    classNames?: (string | undefined)[]
    /** Contents of line \<span> */

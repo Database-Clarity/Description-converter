@@ -1,4 +1,4 @@
-import { CellContent, DescriptionLine, LinesContent } from '../interfaces'
+import { CellContent, DescriptionLine, LinesContent } from '../types'
 
 import { classNameList } from '../data'
 

@@ -7,13 +7,12 @@ import {
    IntermediatePerk,
    LinesContent,
    PerkTypes,
-   PossiblePerkLinks,
    RowContent,
    Stat,
    Stats,
    TableLine
-} from './src/interfaces'
-import { Languages, LivePerk, StatNames, WeaponTypes } from './src/livePerkInterface'
+} from './src/types'
+import { Languages, LivePerk, StatNames, WeaponTypes } from './src/livePerkTypes'
 import { converterSettings, getSettings } from './src/converterSettings'
 import { languageKeys, statNames, weaponTypes } from './src/data'
 
@@ -44,7 +43,6 @@ export {
    IntermediatePerk,
    Stat,
    Stats,
-   PossiblePerkLinks,
    Editor,
    // ---
    LinesContent,

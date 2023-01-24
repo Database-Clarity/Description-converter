@@ -1,4 +1,4 @@
-import { CellContent, DescriptionLine } from '../interfaces'
+import { CellContent, DescriptionLine } from '../types'
 
 import { classNameList } from '../data'
 import { convertLinesContent } from './lineConverter'

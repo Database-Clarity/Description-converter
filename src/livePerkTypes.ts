@@ -109,7 +109,7 @@ export type Languages =
    /** Chinese (Simplified) - 简体中文 */
    | 'zh-chs'
 
-interface Stat {
+   type Stat = {
    /**
     ** Types of weapons these stats apply to
     ** These are our custom weapon type names
@@ -159,7 +159,7 @@ type Stats = {
    [key in StatNames]?: Stat[]
 }
 
-interface LinesContent {
+type LinesContent = {
    /**
     ** Text in this part of the line
     */
@@ -186,7 +186,7 @@ interface LinesContent {
    title?: DescriptionLine[]
 }
 
-interface CellContent {
+type CellContent = {
    /**
     ** Text in this part of the cell (\<span>)
     */
@@ -216,7 +216,7 @@ interface CellContent {
 /**
  ** Contents of a row in tables (\<tr>) - array of cells
  */
-interface RowContent {
+ type RowContent = {
    /**
     ** Contents of cell (\<td>) - array of spans (\<span>)
     */
@@ -238,7 +238,7 @@ interface RowContent {
    classNames?: string[]
 }
 
-interface TableLine {
+type TableLine = {
    /**
     ** Contents of table row (\<tr>)
     */
@@ -250,7 +250,7 @@ interface TableLine {
    classNames?: string[]
 }
 
-interface DescriptionLine {
+type DescriptionLine = {
    /**
     ** Line (\<div>) class names
     */
@@ -277,7 +277,7 @@ interface DescriptionLine {
    weaponTypes?: (string | undefined)[]
 }
 
-export interface LivePerk {
+export type LivePerk = {
    /**
     ** Perk, Mod, etc. hash
     ** InventoryItem hash

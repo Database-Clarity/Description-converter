@@ -1,4 +1,4 @@
-import { DescriptionLine, TableClassNames } from '../interfaces'
+import { DescriptionLine, TableClassNames } from '../types'
 import { classNameList, weaponTypes } from '../data'
 
 import { convertLinesContent } from './lineConverter'

@@ -1,4 +1,4 @@
-import { DescriptionData, DescriptionLine } from './interfaces'
+import { DescriptionData, DescriptionLine } from './types'
 
 import { doMath } from './converterFunctions/doMath'
 import { extractTitles } from './converterFunctions/extractTitles'

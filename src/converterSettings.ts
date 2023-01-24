@@ -1,9 +1,9 @@
 import { allClassNames, languageKeys } from './data'
 
-import { AllClassNames } from './interfaces'
-import { Languages } from './livePerkInterface'
+import { AllClassNames } from './types'
+import { Languages } from './livePerkTypes'
 
-export interface DescriptionFilter {
+export type DescriptionFilter = {
    getFromPerk: {
       /**
        ** Time then perk was uploaded

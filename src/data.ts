@@ -1,4 +1,4 @@
-import { Languages, StatNames, WeaponTypes } from './livePerkInterface'
+import { Languages, StatNames, WeaponTypes } from './livePerkTypes'
 
 export const statNames: StatNames[] = [
    'Range',
