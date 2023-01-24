@@ -22,10 +22,6 @@ jobs:
           npm ci
           npm i @icemourne/tool-box @icemourne/description-converter
 
-      # - name: Build
-      #   run: |
-      #     npm run build
-
       - name: Version up 🆙
         run: |
           git config --global user.email "cboweris@gmail.com"
