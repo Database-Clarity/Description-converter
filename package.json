@@ -1,15 +1,21 @@
 {
   "name": "@icemourne/description-converter",
-  "version": "1.0.27",
-  "exports": {
-    ".": "./index.js"
-  },
-  "main": "converter/index.ts",
   "author": "Icemourne",
   "license": "MIT",
+  "version": "1.0.27",
+  "exports": {
+    ".": "./index.ts"
+  },
   "description": "",
   "scripts": {
     "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ice-mourne/Tool-box.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ice-mourne/Tool-box/issues"
   },
   "dependencies": {
     "@icemourne/description-converter": "^1.0.26",
