@@ -3,7 +3,7 @@ import { LivePerkTypes } from '../livePerkTypes'
 export const removePerkSpecificText = (description: string, perkType: LivePerkTypes | 'none') => {
    const enhancedExports = description.match(/^enhanced \([\s\S]*?\n\)$/gm)
 
-   if (enhancedExports && perkType !== 'Weapon Perk Enhanced') {
+   if (enhancedExports && perkType !== 'Weapon Trait Enhanced') {
       enhancedExports.forEach((enhancedExport) => {
          description = description.replace(enhancedExport, '')
       })

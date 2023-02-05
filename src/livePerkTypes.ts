@@ -6,15 +6,32 @@
  ** Perk types are not the same as Bungie's
  */
 export type LivePerkTypes =
-   | 'Armor Perk Exotic'
-   | 'Weapon Perk Exotic'
-   | 'Weapon Frame Exotic'
-   | 'Weapon Catalyst Exotic'
+   | 'Armor Trait Exotic'
+   | 'Armor Mod General'
+   | 'Armor Mod Combat'
+   | 'Armor Mod Activity'
+   | 'Armor Mod Seasonal'
    // ---------
    | 'Weapon Perk'
-   | 'Weapon Perk Enhanced'
-   | 'Weapon Origin Trait'
+   | 'Weapon Perk Exotic'
+   // ---------
+   | 'Weapon Trait'
+   | 'Weapon Trait Exotic'
+   | 'Weapon Trait Origin'
+   | 'Weapon Trait Origin Exotic'
+   | 'Weapon Trait Frame'
+   | 'Weapon Trait Frame Exotic'
+   | 'Weapon Trait Enhanced'
+   | 'Weapon Trait Enhanced Exotic'
+   // ---------
    | 'Weapon Frame'
+   | 'Weapon Frame Exotic'
+   | 'Weapon Frame Enhanced'
+   | 'Weapon Frame Enhanced Exotic'
+   // ---------
+   | 'Weapon Catalyst Exotic'
+   // ---------
+   | 'Weapon Mod'
    // ---------
    | 'Subclass Fragment'
    | 'Subclass Aspect'
@@ -24,11 +41,6 @@ export type LivePerkTypes =
    | 'Subclass Class'
    | 'Subclass Movement'
    // ---------
-   | 'Armor Mod General'
-   | 'Armor Mod Combat'
-   | 'Armor Mod Activity'
-   | 'Armor Mod Seasonal'
-   | 'Weapon Mod'
    | 'Ghost Mod'
 
 /**
@@ -109,7 +121,7 @@ export type Languages =
    /** Chinese (Simplified) - 简体中文 */
    | 'zh-chs'
 
-   type Stat = {
+type Stat = {
    /**
     ** Types of weapons these stats apply to
     ** These are our custom weapon type names
@@ -216,7 +228,7 @@ type CellContent = {
 /**
  ** Contents of a row in tables (\<tr>) - array of cells
  */
- type RowContent = {
+type RowContent = {
    /**
     ** Contents of cell (\<td>) - array of spans (\<span>)
     */

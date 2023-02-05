@@ -1,5 +1,5 @@
-import { Languages, LivePerkTypes, StatNames, WeaponTypes } from './livePerkTypes'
 import { allClassNames, classNameList } from './data'
+import { Languages, LivePerkTypes, StatNames, WeaponTypes } from './livePerkTypes'
 
 export type PerkTypes = LivePerkTypes | 'none'
 
@@ -11,7 +11,7 @@ export type DescriptionData = {
    editorType: 'main' | 'secondary'
    language: Languages
    hash: number
-   database: Database
+   database: Database['perks']
 }
 
 export type Stat = {
@@ -44,7 +44,6 @@ export type IntermediatePerk = {
    uploadedBy: string
    type: PerkTypes
    importStatsFrom?: number
-   linkedWith?: number
    updateTracker: {
       stats?: {
          lastUpdate: number
@@ -64,7 +63,30 @@ export type IntermediatePerk = {
    uploadToLive: boolean
 }
 export type Database = {
-   [key in string]: IntermediatePerk
+   perks: {
+      [key in string]: IntermediatePerk
+   }
+
+   databaseSettings: {
+      folders: {
+         enhancedLegendaryWeaponFrames: {
+            name: string
+            has: number[]
+         }[]
+         enhancedTraitLinking: {
+            name: string
+            has: number[]
+         }[]
+         exoticWeapons: {
+            name: string
+            has: number[]
+         }[]
+         legendaryWepFrames: {
+            name: string
+            has: number[]
+         }[]
+      }
+   }
 }
 
 export type LinesContent = {
