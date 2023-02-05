@@ -1,4 +1,4 @@
-import { DescriptionData } from '../types'
+import { DescriptionData } from '../types.js'
 
 const getExports = (description: string) => {
    const exported = description.match(/^export [A-z0-9 ]+ \([\s\S]*?\n\)$/gm)

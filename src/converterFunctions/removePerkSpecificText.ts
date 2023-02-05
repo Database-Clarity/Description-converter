@@ -1,4 +1,4 @@
-import { LivePerkTypes } from '../livePerkTypes'
+import { LivePerkTypes } from '../livePerkTypes.js'
 
 export const removePerkSpecificText = (description: string, perkType: LivePerkTypes | 'none') => {
    const enhancedExports = description.match(/^enhanced \([\s\S]*?\n\)$/gm)

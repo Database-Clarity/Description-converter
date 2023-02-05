@@ -1,4 +1,4 @@
-import { DescriptionData } from '../types'
+import { DescriptionData } from '../types.js'
 
 export const getVariables = (description: string) => {
    const variables = description.match(/^var [A-z0-9]+ = .+$/gm)

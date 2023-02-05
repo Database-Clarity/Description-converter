@@ -1,8 +1,7 @@
-import { CellContent, DescriptionLine } from '../types'
-
-import { classNameList } from '../data'
-import { convertLinesContent } from './lineConverter'
-import { getLineClasses } from './extractClassesFromLine'
+import { classNameList } from '../data.js'
+import { CellContent, DescriptionLine } from '../types.js'
+import { getLineClasses } from './extractClassesFromLine.js'
+import { convertLinesContent } from './lineConverter.js'
 
 export const splitTable = (line: string, title: { [key: string]: DescriptionLine[] }) => {
    const { classNames, cleanLine } = getLineClasses(line, classNameList.empty)

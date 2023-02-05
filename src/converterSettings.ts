@@ -1,7 +1,6 @@
-import { allClassNames, languageKeys } from './data'
-
-import { AllClassNames } from './types'
-import { Languages } from './livePerkTypes'
+import { allClassNames, languageKeys } from './data.js'
+import { Languages } from './livePerkTypes.js'
+import { AllClassNames } from './types.js'
 
 export type DescriptionFilter = {
    getFromPerk: {

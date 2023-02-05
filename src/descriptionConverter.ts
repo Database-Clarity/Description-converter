@@ -1,12 +1,11 @@
-import { DescriptionData, DescriptionLine } from './types'
-
-import { doMath } from './converterFunctions/doMath'
-import { extractTitles } from './converterFunctions/extractTitles'
-import { loadExports } from './converterFunctions/loadExports'
-import { loadVariables } from './converterFunctions/loadVariables'
-import { removePerkSpecificText } from './converterFunctions/removePerkSpecificText'
-import { removeUnusedText } from './converterFunctions/removeUnusedText'
-import { separateTableWeaponType } from './converterFunctions/separateTableWeaponType'
+import { doMath } from './converterFunctions/doMath.js'
+import { extractTitles } from './converterFunctions/extractTitles.js'
+import { loadExports } from './converterFunctions/loadExports.js'
+import { loadVariables } from './converterFunctions/loadVariables.js'
+import { removePerkSpecificText } from './converterFunctions/removePerkSpecificText.js'
+import { removeUnusedText } from './converterFunctions/removeUnusedText.js'
+import { separateTableWeaponType } from './converterFunctions/separateTableWeaponType.js'
+import { DescriptionData, DescriptionLine } from './types.js'
 
 const prepareDescription = (descriptionData: DescriptionData) => {
    const { language, hash, database } = descriptionData

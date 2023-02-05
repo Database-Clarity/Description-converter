@@ -1,5 +1,5 @@
-import { allClassNames, classNameList } from './data'
-import { Languages, LivePerkTypes, StatNames, WeaponTypes } from './livePerkTypes'
+import { allClassNames, classNameList } from './data.js'
+import { Languages, LivePerkTypes, StatNames, WeaponTypes } from './livePerkTypes.js'
 
 export type PerkTypes = LivePerkTypes | 'none'
 

@@ -1,6 +1,5 @@
-import { CellContent, DescriptionLine, LinesContent } from '../types'
-
-import { classNameList } from '../data'
+import { classNameList } from '../data.js'
+import { CellContent, DescriptionLine, LinesContent } from '../types.js'
 
 export const convertLinesContent = (line: string, tiles: { [key: string]: DescriptionLine[] }) => {
    const splittedLine = line.split(/(<.+?\/>|🡅)/g).filter((line) => line !== '')

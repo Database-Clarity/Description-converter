@@ -1,9 +1,8 @@
-import { DescriptionLine, TableClassNames } from '../types'
-import { classNameList, weaponTypes } from '../data'
-
-import { convertLinesContent } from './lineConverter'
-import { getLineClasses } from './extractClassesFromLine'
-import { splitTable } from './splitTable'
+import { classNameList, weaponTypes } from '../data.js'
+import { DescriptionLine, TableClassNames } from '../types.js'
+import { getLineClasses } from './extractClassesFromLine.js'
+import { convertLinesContent } from './lineConverter.js'
+import { splitTable } from './splitTable.js'
 
 /*
    (
