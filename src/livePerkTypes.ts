@@ -19,8 +19,6 @@ export type LivePerkTypes =
    | 'Weapon Trait Exotic'
    | 'Weapon Trait Origin'
    | 'Weapon Trait Origin Exotic'
-   | 'Weapon Trait Frame'
-   | 'Weapon Trait Frame Exotic'
    | 'Weapon Trait Enhanced'
    | 'Weapon Trait Enhanced Exotic'
    // ---------
