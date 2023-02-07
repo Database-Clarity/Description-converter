@@ -69,22 +69,10 @@ export type Database = {
 
    databaseSettings: {
       folders: {
-         enhancedLegendaryWeaponFrames: {
+         [key in string]: {
             name: string
             has: number[]
-         }[]
-         enhancedTraitLinking: {
-            name: string
-            has: number[]
-         }[]
-         exoticWeapons: {
-            name: string
-            has: number[]
-         }[]
-         legendaryWepFrames: {
-            name: string
-            has: number[]
-         }[]
+         }
       }
    }
 }
