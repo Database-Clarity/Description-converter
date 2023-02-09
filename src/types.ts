@@ -63,7 +63,7 @@ export type IntermediatePerk = {
    uploadToLive: boolean
 }
 
-type FolderTypes = 'exoticWeapons' | 'legendaryWepFrames' | 'enhancedLegendaryWeaponFrames'
+type FolderTypes = 'Weapon Frame Exotic' | 'Weapon Frame' | 'Weapon Frame Enhanced'
 export type Database = {
    perks: {
       [key in string]: IntermediatePerk
