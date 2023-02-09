@@ -10,7 +10,8 @@ export type {
    RowContent,
    Stat,
    Stats,
-   TableLine
+   TableLine,
+   FolderTypes
 } from './src/types.js'
 export type { Languages, LivePerk, StatNames, WeaponTypes } from './src/livePerkTypes.js'
 export { converterSettings, getSettings } from './src/converterSettings.js'
