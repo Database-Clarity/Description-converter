@@ -17,6 +17,7 @@ export type DescriptionData = {
 export type Stat = {
    weaponTypes?: WeaponTypes[]
    active?: {
+      duration?: number[]
       multiplier?: number[]
       stat?: number[]
    }

@@ -1,26 +1,34 @@
 import { Languages, StatNames, WeaponTypes } from './livePerkTypes.js'
 
 export const statNames: StatNames[] = [
-   'Range',
-   'Reload',
-   'Handling',
-   'Stability',
-   'Zoom',
    'Aim Assist',
+   'Airborne',
+   'Blast Radius',
    'Charge Draw',
-   'RPM',
-   'Ready',
-   'Stow',
    'Damage',
-   'Airborne'
+   'Firing Delay',
+   'Guard Charge Rate',
+   'Guard Efficiency',
+   'Guard Endurance',
+   'Guard Resistance',
+   'Handling',
+   'PVE Damage',
+   'PVP Damage',
+   'Range',
+   'Ready',
+   'Reload',
+   'RPM',
+   'Stability',
+   'Stow',
+   'Zoom'
 ]
 
 export const weaponTypes: WeaponTypes[] = [
    'AR',
    'Bow',
    'Fusion',
-   'Glaive',
    'GL',
+   'Glaive',
    'HC',
    'Heavy GL',
    'LFR',
@@ -30,14 +38,14 @@ export const weaponTypes: WeaponTypes[] = [
    'Scout',
    'Shotgun',
    'Sidearm',
-   'Sniper',
    'SMG',
+   'Sniper',
    'Sword',
    'Trace',
    // ---------
-   'Super',
    'Grenade',
-   'Melee'
+   'Melee',
+   'Super'
 ]
 
 export const languages: [Languages, string][] = [
@@ -59,8 +67,8 @@ export const languages: [Languages, string][] = [
 export const languageKeys = languages.map((languageKey) => languageKey[0])
 
 const textColoring = [
-   'green' as const,
    'blue' as const,
+   'green' as const,
    'purple' as const,
    'yellow' as const,
    'center' as const,
@@ -70,30 +78,30 @@ const textColoring = [
 ]
 
 const images = [
-   'stasis' as const,
    'arc' as const,
    'solar' as const,
+   'stasis' as const,
    'void' as const,
 
+   'heavy' as const,
    'primary' as const,
    'special' as const,
-   'heavy' as const,
 
    'barrier' as const,
    'overload' as const,
    'unstoppable' as const,
 
-   'warlock' as const,
    'hunter' as const,
-   'titan' as const
+   'titan' as const,
+   'warlock' as const
 ]
 
 const table = [
-   'wide' as const,
-   'centerTable' as const,
    'background_1' as const,
    'background_2' as const,
-   'formula' as const
+   'centerTable' as const,
+   'formula' as const,
+   'wide' as const
 ]
 
 const empty = ['background' as const, 'breakSpaces' as const, 'bold' as const]

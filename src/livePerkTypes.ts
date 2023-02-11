@@ -45,18 +45,26 @@ export type LivePerkTypes =
  ** Stats names are not the same as Bungie's
  */
 export type StatNames =
-   | 'Range'
-   | 'Reload'
-   | 'Handling'
-   | 'Stability'
-   | 'Zoom'
    | 'Aim Assist'
-   | 'Charge Draw' // Charge Time and Draw Time combined
-   | 'RPM' // Rounds Per Minute modifiers used by perks like Adagio
-   | 'Ready' // Handling modifiers that only apply to Ready Speed
-   | 'Stow' // Handling modifiers that only apply to Stow Speed
-   | 'Damage'
    | 'Airborne' // Airborne Effectiveness
+   | 'Blast Radius'
+   | 'Charge Draw' // Charge Time and Draw Time combined
+   | 'Damage'
+   | 'Firing Delay'
+   | 'Guard Charge Rate'
+   | 'Guard Efficiency'
+   | 'Guard Endurance'
+   | 'Guard Resistance'
+   | 'Handling'
+   | 'PVE Damage'
+   | 'PVP Damage'
+   | 'Range'
+   | 'Ready' // Handling modifiers that only apply to Ready Speed
+   | 'Reload'
+   | 'RPM' // Rounds Per Minute modifiers used by perks like Adagio
+   | 'Stability'
+   | 'Stow' // Handling modifiers that only apply to Stow Speed
+   | 'Zoom'
 
 /**
  ** Weapon types are not the same as Bungie's
@@ -65,8 +73,8 @@ export type WeaponTypes =
    | 'AR' // Auto Rifle
    | 'Bow' // (Combat) Bow
    | 'Fusion' // Fusion Rifle
-   | 'Glaive' // Glaive
    | 'GL' // Grenade Launcher
+   | 'Glaive' // Glaive
    | 'HC' // Hand Cannon
    | 'Heavy GL' // Heavy (Drum-Loaded) Grenade Launcher
    | 'LFR' // Linear Fusion Rifle
@@ -76,14 +84,14 @@ export type WeaponTypes =
    | 'Scout' // Scout Rifle
    | 'Shotgun' // Shotgun - includes slug and pellet shotguns
    | 'Sidearm' // Sidearm
-   | 'Sniper' // Sniper Rifle
    | 'SMG' // Submachine Gun
+   | 'Sniper' // Sniper Rifle
    | 'Sword' // Sword
    | 'Trace' // Trace Rifle
    /** Ability "WeaponTypes" are generally used for ability damage increases from mods/exotics */
-   | 'Super'
    | 'Grenade'
    | 'Melee'
+   | 'Super'
 
 /**
  ** Languages are the same as Bungie's
