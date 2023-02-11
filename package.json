@@ -2,7 +2,7 @@
   "name": "@icemourne/description-converter",
   "author": "Icemourne",
   "license": "MIT",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "exports": {
     ".": "./index.js"
   },
@@ -19,7 +19,7 @@
     "url": "https://github.com/Ice-mourne/Tool-box/issues"
   },
   "dependencies": {
-    "@icemourne/description-converter": "^1.0.32",
+    "@icemourne/description-converter": "^1.0.33",
     "@icemourne/tool-box": "^1.0.36",
     "lodash": "^4.17.21"
   },
