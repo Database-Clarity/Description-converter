@@ -17,7 +17,6 @@ export type DescriptionData = {
 export type Stat = {
    weaponTypes?: WeaponTypes[]
    active?: {
-      duration?: number[]
       multiplier?: number[]
       stat?: number[]
    }
@@ -59,6 +58,8 @@ export type IntermediatePerk = {
    }
    editor: Editor
    stats?: Stats
+   duration?: number[]
+   activationCondition?: string
    lastUpload: number
    inLiveDatabase: boolean
    uploadToLive: boolean
