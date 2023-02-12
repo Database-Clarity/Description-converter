@@ -15,7 +15,7 @@ export type {
 } from './src/types.js'
 export type { Languages, LivePerk, StatNames, WeaponTypes } from './src/livePerkTypes.js'
 export { converterSettings, getSettings } from './src/converterSettings.js'
-export { languageKeys, statNames, weaponTypes } from './src/data.js'
+export { languageKeys, statNames, weaponTypes, languages } from './src/data.js'
 
 export { descriptionConverter } from './src/descriptionConverter.js'
 export { descriptionFilter } from './src/descriptionFilter.js'
