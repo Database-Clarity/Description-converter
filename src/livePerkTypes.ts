@@ -60,6 +60,7 @@ export type StatNames =
    | 'PVP Damage'
    | 'Range'
    | 'Ready' // Handling modifiers that only apply to Ready Speed
+   | 'Recoil Direction'
    | 'Reload'
    | 'RPM' // Rounds Per Minute modifiers used by perks like Adagio
    | 'Stability'

@@ -13,6 +13,7 @@ export const statNames: StatNames[] = [
    'Range',
    'Ready',
    'Reload',
+   'Recoil Direction',
    'RPM',
    'Stability',
    'Stow',
