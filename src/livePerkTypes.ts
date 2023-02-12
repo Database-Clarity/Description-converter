@@ -45,11 +45,12 @@ export type LivePerkTypes =
  ** Stats names are not the same as Bungie's
  */
 export type StatNames =
+   | 'ADS' // Handling modifiers that only apply to ADS Speed
    | 'Aim Assist'
    | 'Airborne' // Airborne Effectiveness
    | 'Blast Radius'
    | 'Charge Draw' // Charge Time and Draw Time combined
-   | 'Damage'
+   | 'Damage' // For internal use only
    | 'Firing Delay'
    | 'Guard Charge Rate'
    | 'Guard Efficiency'
