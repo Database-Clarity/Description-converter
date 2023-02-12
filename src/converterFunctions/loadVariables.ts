@@ -1,12 +1,12 @@
 import { DescriptionData } from '../types.js'
 
 export const getVariables = (description: string) => {
-   const variables = description.match(/^var [A-z0-9]+ = .+$/gm)
+   const variables = description.match(/^var [a-zA-Z0-9]+ = .+$/gm)
 
    if (variables === null) return
    return variables.reduce((acc, variableText) => {
-      const varName = variableText.match(/(?<=var )[A-z0-9]+(?= = )/)?.[0].trim()
-      const varValue = variableText.match(/(?<=var [A-z0-9]+ = ).+/)?.[0].trim()
+      const varName = variableText.match(/(?<=var )[a-zA-Z0-9]+(?= = )/)?.[0].trim()
+      const varValue = variableText.match(/(?<=var [a-zA-Z0-9]+ = ).+/)?.[0].trim()
       if (!varName || !varValue) return acc
 
       if (varValue === 'empty') {
@@ -23,7 +23,7 @@ export const loadVariables = (descriptionData: DescriptionData): string => {
    let description = descriptionString
 
    const getVariablesNames = (description: string) => {
-      return description.match(/#[A-z0-9]+/g) || []
+      return description.match(/#[a-zA-Z0-9]+/g) || []
    }
 
    const replaceVariables = (variablesInDescription: string[]) => {
