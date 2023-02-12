@@ -5,13 +5,9 @@ export const statNames: StatNames[] = [
    'Airborne',
    'Blast Radius',
    'Charge Draw',
-   'Damage',
    'Firing Delay',
-   'Guard Charge Rate',
-   'Guard Efficiency',
-   'Guard Endurance',
-   'Guard Resistance',
    'Handling',
+   'Damage',
    'PVE Damage',
    'PVP Damage',
    'Range',
@@ -20,7 +16,11 @@ export const statNames: StatNames[] = [
    'RPM',
    'Stability',
    'Stow',
-   'Zoom'
+   'Zoom',
+   'Guard Charge Rate',
+   'Guard Efficiency',
+   'Guard Endurance',
+   'Guard Resistance'
 ]
 
 export const weaponTypes: WeaponTypes[] = [
