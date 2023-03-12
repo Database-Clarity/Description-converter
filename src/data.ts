@@ -83,6 +83,7 @@ const images = [
    'solar' as const,
    'stasis' as const,
    'void' as const,
+   'strand' as const,
 
    'heavy' as const,
    'primary' as const,
