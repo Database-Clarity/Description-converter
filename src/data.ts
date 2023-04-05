@@ -78,7 +78,7 @@ const textColoring = [
    'pvp' as const
 ]
 
-const images = [
+export const images = [
    'arc' as const,
    'solar' as const,
    'stasis' as const,

@@ -1,4 +1,4 @@
-import { allClassNames, languageKeys } from './data.js'
+import { allClassNames, images, languageKeys } from './data.js'
 import { Languages } from './livePerkTypes.js'
 import { AllClassNames } from './types.js'
 
@@ -164,7 +164,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
          title: false,
          table: false,
          weaponTypes: false,
-         includeClassNames: ['spacer', 'center', 'bold', 'breakSpaces', 'background', 'enhancedArrow'],
+         includeClassNames: ['spacer', 'center', 'bold', 'breakSpaces', 'background', 'enhancedArrow', ...images],
          excludeClassNames: []
       },
       enhancedArrowReplacement: '',
