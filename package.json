@@ -18,12 +18,13 @@
   "bugs": {
     "url": "https://github.com/Ice-mourne/Tool-box/issues"
   },
+  "dependencies": {
+    "@icemourne/tool-box": "^1.0.40",
+    "lodash": "^4.17.21"
+  },
   "devDependencies": {
-    "@icemourne/description-converter": "^1.0.46",
-    "@icemourne/tool-box": "^1.0.39",
     "@types/lodash": "^4.14.195",
     "@types/node": "^18.16.16",
-    "lodash": "^4.17.21",
     "typescript": "^5.1.3"
   }
 }
