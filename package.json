@@ -2,7 +2,7 @@
   "name": "@icemourne/description-converter",
   "author": "Icemourne",
   "license": "MIT",
-  "version": "1.0.45",
+  "version": "1.0.46",
   "exports": {
     ".": "./index.js"
   },
