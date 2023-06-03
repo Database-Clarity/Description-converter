@@ -19,6 +19,7 @@
     "url": "https://github.com/Ice-mourne/Tool-box/issues"
   },
   "dependencies": {
+    "@icemourne/description-converter": "^1.0.47",
     "@icemourne/tool-box": "^1.0.40",
     "lodash": "^4.17.21"
   },
