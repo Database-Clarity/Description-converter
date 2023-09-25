@@ -17,7 +17,7 @@ export const cleanDescription = <T>(obj: T, converterType: string): T => {
         // replace PVP text
         if (obj.classNames?.includes('pvp') && !getFromDescription.includeClassNames?.includes('pvp')) {
           const pvpText = obj[key]
-            .match(/\[[+-]?\d+(\.\d+)?[%?]*?(-?[+-]?\d+(\.\d+)?[%?]*?)?\]/g)?.[0]
+            .match(/\[.+?\]/g)?.[0]
             .replace(/\[|\]/g, '')
           if (pvpText === null) continue
 
