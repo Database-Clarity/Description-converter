@@ -224,6 +224,28 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       link: ['[', ']', '(', ')']
     }
   },
+  foundry: {
+    getFromPerk: {
+      lastUpload: true,
+      stats: false,
+      type: true,
+      uploadedBy: true,
+      updateTracker: true,
+      languages: undefined
+    },
+    getFromDescription: {
+      formula: false,
+      link: false,
+      title: false,
+      table: false,
+      weaponTypes: false,
+      includeClassNames: ['spacer', 'breakSpaces', 'enhancedArrow', ...images],
+      excludeClassNames: []
+    },
+    enhancedArrowReplacement: undefined,
+    editor: 'secondary',
+    optional: false
+  },
   lightGG: {
     getFromPerk: {
       lastUpload: true,
