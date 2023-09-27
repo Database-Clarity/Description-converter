@@ -121,7 +121,7 @@ export type Languages =
   /** Korean - 한국어 */
   | 'ko'
   /** Portuguese (Brazil) - Português (Brasil) */
-  | 'pt-rb'
+  | 'pt-br'
   /** Japanese - 日本語 */
   | 'ja'
   /** Chinese (Traditional) - 繁體中文 */
