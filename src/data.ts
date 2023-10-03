@@ -59,7 +59,7 @@ export const languages: [Languages, string][] = [
   ['es', 'Spanish (Spain) - Español (España)'],
   ['es-mx', 'Spanish (Mexico) - Español (México)'],
   ['ko', 'Korean - 한국어'],
-  ['pt-rb', 'Portuguese (Brazil) - Português (Brasil)'],
+  ['pt-br', 'Portuguese (Brazil) - Português (Brasil)'],
   ['ja', 'Japanese - 日本語'],
   ['zh-cht', 'Chinese (Traditional) - 繁體中文'],
   ['zh-chs', 'Chinese (Simplified) - 简体中文']
