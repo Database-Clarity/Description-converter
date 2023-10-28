@@ -267,6 +267,65 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
     enhancedArrowReplacement: undefined,
     editor: 'secondary',
     optional: false
+  },
+  braytech: {
+    getFromPerk: {
+      lastUpload: true,
+      stats: true,
+      type: true,
+      uploadedBy: true,
+      updateTracker: false,
+      languages: undefined
+    },
+    getFromDescription: {
+      formula: false,
+      link: true,
+      title: false,
+      table: false,
+      weaponTypes: false,
+      includeClassNames: [
+        'solar',
+        'void',
+        'arc',
+        'stasis',
+        'strand',
+
+        'primary',
+        'special',
+        'heavy',
+
+        'pve',
+        'pvp',
+
+        'background',        
+        'spacer',
+        'bold'
+      ],
+      excludeClassNames: []
+    },
+    enhancedArrowReplacement: undefined,
+    editor: 'main', // copied from clarity but crayon used secondary ???
+    optional: false, // same as above
+    toStringConverterOptions: {
+      classNames: {
+        solar: ['', ''],
+        void: ['', ''],
+        arc: ['', ''],
+        stasis: ['', ''],
+        strand: ['', ''],
+
+        primary: ['', ''],
+        special: ['', ''],
+        heavy: ['', ''],
+        
+        titan: ['', ''],
+        hunter: ['', ''],
+        warlock: ['', ''],
+        
+        bold: ['**', '**']
+      },
+      link: ['[', ']', '(', ')']
+    }
   }
 }
 export const getSettings = (name: string): DescriptionFilter => {
