@@ -79,6 +79,7 @@ const textColoring = [
 ]
 
 export const images = [
+  'kinetic' as const,
   'arc' as const,
   'solar' as const,
   'stasis' as const,
