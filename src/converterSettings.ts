@@ -326,6 +326,66 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       },
       link: ['[', ']', '(', ')']
     }
+  },
+  vaultZero: {
+    getFromPerk: {
+      lastUpload: false,
+      stats: true,
+      type: true,
+      uploadedBy: false,
+      updateTracker: false,
+      languages: ['en']
+    },
+    getFromDescription: {
+      formula: false,
+      link: true,
+      title: false,
+      table: false,
+      weaponTypes: false,
+      includeClassNames: [
+        'spacer',
+        
+        'stasis',
+        'arc',
+        'solar',
+        'void',
+        'strand',
+        
+        'primary',
+        'special',
+        'heavy',
+        
+        'pve',
+        'pvp',
+        
+        'background',
+        'bold'
+      ],
+      excludeClassNames: []
+    },
+    enhancedArrowReplacement: undefined,
+    editor: 'secondary',
+    optional: true,
+    toStringConverterOptions: {
+      classNames: {
+        stasis: ['[stasis]', ''],
+        arc: ['[arc]', ''],
+        solar: ['[solar]', ''],
+        void: ['[void]', ''],
+        strand: ['[strand]', ''],
+        
+        primary: ['[primary]', ''],
+        special: ['[special]', ''],
+        heavy: ['[heavy]', ''],
+
+        pve: ['[pve]', ''],
+        pvp: ['[pvp]', ''],
+
+        background: ['**', '**'],
+        bold: ['**', '**']
+      },
+      link: ['[', ']', '(', ')']
+    }
   }
 }
 export const getSettings = (name: string): DescriptionFilter => {
