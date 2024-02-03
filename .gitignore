@@ -3,3 +3,4 @@ node_modules
 converter
 *.js
 *.d.ts
+.DS_Store
