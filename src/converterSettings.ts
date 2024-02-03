@@ -363,7 +363,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       ],
       excludeClassNames: []
     },
-    enhancedArrowReplacement: undefined,
+    enhancedArrowReplacement: '[enh]',
     editor: 'secondary',
     optional: true,
     toStringConverterOptions: {
