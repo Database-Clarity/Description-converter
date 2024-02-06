@@ -359,7 +359,6 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
         'pve',
         'pvp',
         
-        'background',
         'bold'
       ],
       excludeClassNames: []
@@ -382,7 +381,6 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
         pve: ['[pve]', ''],
         pvp: ['[pvp]', ''],
 
-        background: ['**', '**'],
         bold: ['**', '**']
       },
       link: ['[', ']', '(', ')']
