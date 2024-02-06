@@ -343,23 +343,25 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       table: false,
       weaponTypes: false,
       includeClassNames: [
-        'spacer',
         'enhancedArrow',
         
-        'stasis',
         'arc',
         'solar',
-        'void',
+        'stasis',
         'strand',
+        'void',
         
         'primary',
         'special',
         'heavy',
-        
+
+        'barrier',
+        'overload',
+        'unstoppable',
+
         'pve',
         'pvp',
         
-        'background',
         'bold'
       ],
       excludeClassNames: []
@@ -369,21 +371,24 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
     optional: true,
     toStringConverterOptions: {
       classNames: {
-        stasis: ['[stasis]', ''],
-        arc: ['[arc]', ''],
-        solar: ['[solar]', ''],
-        void: ['[void]', ''],
-        strand: ['[strand]', ''],
-        
-        primary: ['[primary]', ''],
-        special: ['[special]', ''],
-        heavy: ['[heavy]', ''],
+        arc:         ['[Arc]',           ''],
+        solar:       ['[Solar]',         ''],
+        stasis:      ['[Stasis]' ,       ''],
+        strand:      ['[Strand]',        ''],
+        void:        ['[Void]'   ,       ''],
+          
+        primary:     ['[primary]',       ''],
+        special:     ['[special]',       ''],
+        heavy:       ['[heavy]'  ,       ''],
+  
+        barrier:     ['[barrier]',       ''],
+        overload:    ['[overload]',      ''],
+        unstoppable: ['[unstoppable]',   ''],
+  
+        pve:         ['[pve]',           ''],
+        pvp:         ['[pvp]',           ''],
 
-        pve: ['[pve]', ''],
-        pvp: ['[pvp]', ''],
-
-        background: ['**', '**'],
-        bold: ['**', '**']
+        bold:        ['**',            '**']
       },
       link: ['[', ']', '(', ')']
     }
