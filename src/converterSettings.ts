@@ -345,16 +345,20 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       includeClassNames: [
         'enhancedArrow',
         
-        'stasis',
         'arc',
         'solar',
-        'void',
+        'stasis',
         'strand',
+        'void',
         
         'primary',
         'special',
         'heavy',
-        
+
+        'barrier',
+        'overload',
+        'unstoppable',
+
         'pve',
         'pvp',
         
@@ -367,20 +371,24 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
     optional: true,
     toStringConverterOptions: {
       classNames: {
-        stasis: ['[Stasis]', ''],
-        arc:    ['[Arc]'   , ''],
-        solar:  ['[Solar]' , ''],
-        void:   ['[Void]'  , ''],
-        strand: ['[Strand]', ''],
-        
-        primary: ['[primary]', ''],
-        special: ['[special]', ''],
-        heavy: ['[heavy]', ''],
+        arc:         ['[Arc]',           ''],
+        solar:       ['[Solar]',         ''],
+        stasis:      ['[Stasis]' ,       ''],
+        strand:      ['[Strand]',        ''],
+        void:        ['[Void]'   ,       ''],
+          
+        primary:     ['[primary]',       ''],
+        special:     ['[special]',       ''],
+        heavy:       ['[heavy]'  ,       ''],
+  
+        barrier:     ['[barrier]',       ''],
+        overload:    ['[overload]',      ''],
+        unstoppable: ['[unstoppable]',   ''],
+  
+        pve:         ['[pve]',           ''],
+        pvp:         ['[pvp]',           ''],
 
-        pve: ['[pve]', ''],
-        pvp: ['[pvp]', ''],
-
-        bold: ['**', '**']
+        bold:        ['**',            '**']
       },
       link: ['[', ']', '(', ')']
     }
