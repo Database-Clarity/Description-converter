@@ -343,7 +343,6 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       table: false,
       weaponTypes: false,
       includeClassNames: [
-        'spacer',
         'enhancedArrow',
         
         'stasis',
