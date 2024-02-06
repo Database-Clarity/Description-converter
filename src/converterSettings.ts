@@ -369,11 +369,11 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
     optional: true,
     toStringConverterOptions: {
       classNames: {
-        stasis: ['[stasis]', ''],
-        arc: ['[arc]', ''],
-        solar: ['[solar]', ''],
-        void: ['[void]', ''],
-        strand: ['[strand]', ''],
+        stasis: ['[Stasis]', ''],
+        arc:    ['[Arc]'   , ''],
+        solar:  ['[Solar]' , ''],
+        void:   ['[Void]'  , ''],
+        strand: ['[Strand]', ''],
         
         primary: ['[primary]', ''],
         special: ['[special]', ''],
