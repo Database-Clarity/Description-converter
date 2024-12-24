@@ -5,18 +5,17 @@ import { AllClassNames } from './types.js'
 export type DescriptionFilter = {
   getFromPerk: {
     /**
-     ** Time then perk was uploaded
+     ** Time when perk was uploaded
      */
     lastUpload: boolean
 
     /**
-     ** Non bungie stats about perks
-     ** Has no effect on description content
+     ** Discontinued, set to false
      */
     stats: boolean
 
     /**
-     ** Custom perks type for example "Weapon Perk Exotic", "Armor Mod Seasonal"
+     ** Custom perks types, for example "Weapon Perk Exotic" or "Armor Mod Seasonal"
      */
     type: boolean
 
@@ -26,44 +25,40 @@ export type DescriptionFilter = {
     uploadedBy: boolean
 
     /**
-     ** Time then changes where made and nickName of person who made changes
-     ** Includes description in all languages separately and stats (stats have to be enabled)
+     ** Time when changes were made and nickname of the person who made changes
+     ** Includes description in all languages separately
      */
     updateTracker: boolean
     /**
-     ** Witch languages to include if undefined includes all languages
+     ** Which languages to include; if undefined includes all languages
      */
     languages: Languages[] | undefined
   }
 
   getFromDescription: {
     /**
-     ** Text snippet for example "range_0" they should be replaced with calculated stats
-     ** number in "range_0" represents stat index (stats have to be enabled)
+     ** Discontinued, set to false
      */
     formula: boolean
 
     /**
-     ** External links pointing to some specific resources
-     ** For example Court's Void Sandbox Guide https://docs.google.com/spreadsheets/d/1i1KUwgVkd8qhwYj481gkV9sZNJQCE-C3Q-dpQutPCi4/edit#gid=1079577444
+     ** External links pointing to some resources that provide important context about
+     ** the contents of the tooltips
      */
     link: boolean
 
     /**
-     ** Custom title with additional information about some specific thing
-     ** For example what "refresh" means (Reload, but does not need animation and doesn't proc on-reload perks.)
+     ** Custom title ("hover tooltip") with additional information about specific strings of text
      */
     title: boolean
 
     /**
-     ** Just different display format to make things easier to read for users
+     ** Discontinued, set to false
      */
     table: boolean
 
     /**
-     ** Some parts of description applies only to specific weapon types
-     ** If enabled it will add weapon types to lines with weapon types text applies to
-     ** If like applies to everything then it won't be included
+     ** Discontinued, set to false
      */
     weaponTypes: boolean
 
@@ -86,40 +81,38 @@ export type DescriptionFilter = {
   editor: 'main' | 'secondary'
 
   /**
-   ** Are perks with only bungie stats or description should be included
-   ** This doesn't mean you will get all bungie descriptions or stats
-   ** Maybe I will add bungie stats and descriptions some day
+   ** Discontinued, set it to whatever you want
    */
   optional: boolean
 
   /**
-   ** If you want to replace arrow with something else
-   ** Provide value to replace it with otherwise undefined
+   ** If you want to replace the "enhanced arrow" (🡅) with something else
+   ** Provide a value to replace it with otherwise undefined
    */
   enhancedArrowReplacement: string | undefined
 
   /**
    ** Very basic converter allows converting description to simple string
    ** Can be used to make markdown or similar formats
-   ** Look in to Crayon's configuration for example
+   ** Take a look at Crayon's, Braytech's, or Vault Zero's configurations below
    */
   toStringConverterOptions?: {
     /**
-     ** Adds text to beginning of string and end of string
+     ** Adds text to the beginning and end of a string
      */
     classNames?: {
       [key in AllClassNames]?: [string, string]
     }
 
     /**
-     ** First 2 are for beginning and end of string
-     ** Last 2 are for beginning and end of content
+     ** The first 2 are for the beginning and end of the string
+     ** The last 2 are for the beginning and end of the "hover tooltip" contents
      */
     title?: [string, string, string, string]
 
     /**
-     ** First 2 are for beginning and end of string
-     ** Last 2 are for beginning and end of link
+     ** The first 2 are for the beginning and end of the string
+     ** The last 2 are for the beginning and end of the URL
      */
     link?: [string, string, string, string]
   }
