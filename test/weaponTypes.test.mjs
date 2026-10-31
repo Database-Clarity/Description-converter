@@ -227,3 +227,11 @@ test('an alias uses its own weapon types, a sandbox alias the ones of the origin
   assert.deepEqual(expanded[300].weaponTypes, ['Glaive', 'Shotgun'])
   assert.equal('weaponTypes' in expanded[400], false)
 })
+
+test('clarity specialises with context while clarityV2 retains canonical tags', () => {
+  const lines = descriptionFilter(convert(sections), 'clarity', context(['Sword']))
+  assert.ok(lines.every((line) => !('weaponTypes' in line)))
+  assert.ok(JSON.stringify(lines).includes('sword'))
+  assert.ok(!JSON.stringify(lines).includes('hand cannons'))
+  assert.ok(descriptionFilter(convert(sections), 'clarityV2', context(['Sword'])).some((line) => line.weaponTypes))
+})

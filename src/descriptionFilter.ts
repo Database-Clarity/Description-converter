@@ -132,7 +132,7 @@ const prepareWeaponTypes = (
 ) => {
   const { getFromDescription, weaponTypeNames } = getSettings(converterType)
   if (!description) return description
-  if (getFromDescription.weaponTypes) return tagWeaponTypes(description, weaponTypeNames)
+  if (getFromDescription.weaponTypes && (converterType !== 'clarity' || !weaponTypeContext)) return tagWeaponTypes(description, weaponTypeNames)
   return weaponTypeContext ? specializeWeaponTypes(description, weaponTypeContext) : description
 }
 

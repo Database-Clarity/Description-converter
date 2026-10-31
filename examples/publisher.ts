@@ -1,6 +1,6 @@
 // Complete index.ts for Live-Clarity-Database `converter`, updated for alias stubs.
 // Based on origin/converter:index.ts (0bd5dae). In the publisher repository import from '@icemourne/description-converter'
-// instead of '../index.js'; everything else is a drop-in replacement. Tested by test/publisher.test.mjs
+// instead of '../index.js', and apply the companion externalData.ts changes. Tested by test/publisher.test.mjs
 import { existsSync, mkdirSync, writeFileSync } from 'fs'
 import path from 'path'
 import { pathToFileURL } from 'url'

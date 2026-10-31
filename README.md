@@ -18,7 +18,7 @@ carries the alias's own catalog facts, the descriptions are on the perk with has
 
 `examples/publisher.ts` is the complete `index.ts` for Live-Clarity-Database `converter`, updated for alias stubs and
 tested by `test/publisher.test.mjs`. Replace the publisher's `index.ts` with it (import from `@icemourne/description-converter`
-instead of `../index.js`). The old `index.ts` throws on a stub (it reads `perk.editor.en`), so the new package alone is not
+instead of `../index.js`), and update `externalData.ts` using `examples/externalData.ts` (also change its import to the package). The old `index.ts` throws on a stub (it reads `perk.editor.en`), so the new package alone is not
 enough: the publisher has to be updated **before** the first stub is written to `liveDescriptions.json`.
 
 What it does in `databaseConverter(converterType, database, inventoryItem)`:
@@ -39,7 +39,7 @@ const aliasOutput = isAliasStub(perk) ? getAliasOutput(settings, perk) : 'copy' 
 
 ## Upgrading
 
-Custom `DescriptionFilter` objects need the new `getFromPerk.associated` and `aliases` fields. `Database['perks']` values
+Custom `DescriptionFilter` objects need the new `getFromPerk.associated`, `aliases`, and `weaponTypeNames` fields. `Database['perks']` values
 are now `IntermediatePerk | AliasStub`; use `expandAliases` (result: `ExpandedPerks`) before reading `editor`.
 `DescriptionData.database` has to be expanded.
 
@@ -52,12 +52,12 @@ the editor's. The old `< weapon type ( HC, Bow ) > … < ( other ) > … <$$>` s
 
 `descriptionConverter` tags the lines with `weaponTypes`. `descriptionFilter` then:
 
-- `getFromDescription.weaponTypes: true` (clarity, clarityV2) keeps the lines tagged. `weaponTypeNames` of the setting
+- `clarityV2` keeps the lines tagged; `clarity` does so only without context. `weaponTypeNames` of the setting
   decides the names: `'legacy'` (`HC`, `Heavy GL`, what clarity always had) or `'canonical'` (clarityV2).
-- `false` (the other six) with a third argument `{ weaponTypes, labels, language }` specialises them for the perk
+- The seven legacy settings with a third argument `{ weaponTypes, labels, language }` specialises them for the perk
   (`specializeWeaponTypes`): one weapon type keeps the lines for that type, untagged; several or none keep every block
   with its label ("Hand Cannon: ") on the first line. Labels are `databaseSettings.weaponTypeLabels[name][language]`, then
-  English, then the name itself. Without the argument the lines are removed, as before.
+  English, then the name itself. Without the argument clarity retains its tags and the other six remove the lines, as before.
 
 `weaponTypes` of the context is `perk.weaponTypes` of the **expanded** perk (`IntermediatePerk.weaponTypes`, an alias
 uses its own, a stub without facts the ones of its original). It is never part of the output. `examples/publisher.ts` passes
