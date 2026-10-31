@@ -60,6 +60,8 @@ export type IntermediatePerk = {
   stats?: Stats
   duration?: number[]
   activationCondition?: string
+  /** Canonical hashes of related tooltips, in authored order; only published when the settings ask for it */
+  associated?: number[]
   lastUpload: number
   inLiveDatabase: boolean
   uploadToLive: boolean

@@ -387,4 +387,11 @@ export type LivePerk = {
    ** Optional
    */
   stats?: Stats
+
+  /**
+   ** Hashes of related perks (e.g. exotic → keyword verbs), in the order they should be shown
+   ** Each hash is published as its own entry
+   ** Optional
+   */
+  associated?: number[]
 }

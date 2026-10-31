@@ -29,6 +29,12 @@ export type DescriptionFilter = {
      ** Includes description in all languages separately
      */
     updateTracker: boolean
+
+    /**
+     ** Canonical hashes of related tooltips (e.g. exotic → keyword verbs); each is published as its own entry
+     */
+    associated: boolean
+
     /**
      ** Which languages to include; if undefined includes all languages
      */
@@ -127,6 +133,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       type: true,
       uploadedBy: true,
       updateTracker: false,
+      associated: false,
       languages: undefined
     },
     getFromDescription: {
@@ -149,6 +156,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       type: false,
       uploadedBy: false,
       updateTracker: false,
+      associated: false,
       languages: undefined
     },
     getFromDescription: {
@@ -171,6 +179,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       type: true,
       uploadedBy: true,
       updateTracker: false,
+      associated: false,
       languages: undefined
     },
     getFromDescription: {
@@ -224,6 +233,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       type: true,
       uploadedBy: true,
       updateTracker: true,
+      associated: false,
       languages: undefined
     },
     getFromDescription: {
@@ -246,6 +256,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       type: false,
       uploadedBy: false,
       updateTracker: true,
+      associated: false,
       languages: undefined
     },
     getFromDescription: {
@@ -268,6 +279,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       type: true,
       uploadedBy: true,
       updateTracker: false,
+      associated: false,
       languages: undefined
     },
     getFromDescription: {
@@ -327,6 +339,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       type: true,
       uploadedBy: false,
       updateTracker: false,
+      associated: false,
       languages: ['en']
     },
     getFromDescription: {
@@ -385,6 +398,30 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       },
       link: ['[', ']', '(', ')']
     }
+  },
+  // Output of the v2 editor: same as clarity, plus associations; stats are dropped because v2 data is stat-free
+  clarityV2: {
+    getFromPerk: {
+      lastUpload: true,
+      stats: false,
+      type: true,
+      uploadedBy: true,
+      updateTracker: false,
+      associated: true,
+      languages: undefined
+    },
+    getFromDescription: {
+      formula: true,
+      link: true,
+      title: true,
+      table: true,
+      weaponTypes: true,
+      includeClassNames: undefined,
+      excludeClassNames: []
+    },
+    enhancedArrowReplacement: undefined,
+    editor: 'main',
+    optional: false
   }
 }
 export const getSettings = (name: string): DescriptionFilter => {
