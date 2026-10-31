@@ -72,3 +72,27 @@ test('all weapon sections become headings in every output', () => {
     }
   }
 })
+
+test('legacy parsed section metadata becomes headings at every description depth', () => {
+  const tagged = (text) => ({ weaponTypes: ['Sword'], weaponBlock: 0, weaponOther: false, linesContent: [{ text }] })
+  const input = [tagged('body'), {
+    linesContent: [{ text: 'outer', title: [tagged('nested title')] }],
+    table: [{ rowContent: [{ cellContent: [{ text: 'cell', title: [tagged('cell title')] }] }] }]
+  }, { weaponOther: true, weaponBlock: 1, linesContent: [{ text: 'other body' }] }]
+  for (const name of Object.keys(converterSettings)) {
+    const result = descriptionFilter(structuredClone(input), name)
+    const json = JSON.stringify(result)
+    assert.ok(!/weaponTypes|weaponBlock|weaponOther/.test(json), name)
+    assert.ok(json.includes('body') && json.includes('Sword:') && json.includes('Other:'), name)
+    if (getSettings(name).getFromDescription.title && getSettings(name).getFromDescription.table) {
+      assert.ok(json.includes('nested title') && json.includes('cell title'), name)
+    }
+  }
+})
+
+test('unclosed weapon sections retain their text', () => {
+  for (const input of ['<weapons Sword>\nfirst\nsecond', '< weapon type ( Sword ) >\nfirst\nsecond']) {
+    const json = JSON.stringify(convert(input))
+    assert.ok(json.includes('first') && json.includes('second'))
+  }
+})

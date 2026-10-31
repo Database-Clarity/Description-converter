@@ -112,9 +112,29 @@ const descriptionToString = (description: DescriptionLine[] | undefined, convert
     .trim()
 }
 
+// Old cached descriptions may still carry section metadata. Keep the section as
+// ordinary text, and remove the structural markers at every description level.
+const normalizeLegacySections = (lines: DescriptionLine[] | undefined): DescriptionLine[] | undefined => {
+  if (!lines) return lines
+  let previousSection: string | undefined
+  return lines.flatMap((line) => {
+    const { weaponTypes, weaponBlock, weaponOther, ...body } = line
+    const label = weaponOther ? 'Other' : weaponTypes?.filter(Boolean).join(', ')
+    const section = label ? `${weaponBlock ?? ''}:${label}` : undefined
+    const heading: DescriptionLine[] = section && section !== previousSection
+      ? [{ linesContent: [{ text: `${label}:` }] }]
+      : []
+    previousSection = section
+    body.linesContent?.forEach((content) => { content.title = normalizeLegacySections(content.title) })
+    body.table?.forEach((row) => row.rowContent?.forEach((cell) =>
+      cell.cellContent?.forEach((content) => { content.title = normalizeLegacySections(content.title) })))
+    return [...heading, body]
+  })
+}
+
 export const descriptionFilter = (description: DescriptionLine[] | undefined, converterType: string) => {
   const { toStringConverterOptions } = getSettings(converterType)
-  const newDescription = cleanObject(cleanDescription(description, converterType))
+  const newDescription = cleanObject(cleanDescription(normalizeLegacySections(description), converterType))
 
   // remove spacer from end of description
   let removeSpacer = true

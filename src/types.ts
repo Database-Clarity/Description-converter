@@ -184,10 +184,10 @@ export type DescriptionLine = {
   isFormula?: boolean | undefined
   /** Contents of table \<table> */
   table?: TableLine[]
-  /** If this exists that means this line only applies to some specific weapon types */
+  /** @deprecated Legacy input-only section labels; removed from filtered output. */
   weaponTypes?: (string | undefined)[]
-  /** Number of the weapon type block this line is in, only used to find the first line of a block. Removed by descriptionFilter */
+  /** @deprecated Legacy input-only section identifier. */
   weaponBlock?: number
-  /** The weapon type block of this line is `other`. Removed by descriptionFilter */
+  /** @deprecated Legacy input-only other-section marker. */
   weaponOther?: boolean
 }
