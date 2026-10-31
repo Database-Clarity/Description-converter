@@ -399,6 +399,7 @@ export type LivePerk = {
 /**
  ** Alias of another perk, published by settings with `aliases: 'reference'`
  ** Everything else (descriptions, stats, ...) is on the perk with hash `aliasOf`
+ ** Only published when that perk is published as well
  */
 export type LiveAlias = {
   /**

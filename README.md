@@ -14,14 +14,31 @@ carries the alias's own catalog facts, the descriptions are on the perk with has
   original, `sandbox` aliases are omitted.
 - `'reference'` (clarityV2): every alias is output as `{ hash, aliasOf }` and nothing else.
 
-Publisher usage, 3 steps inside `databaseConverter`:
+## Publisher usage
+
+`examples/publisher.ts` is the complete `index.ts` for Live-Clarity-Database `converter`, updated for alias stubs and
+tested by `test/publisher.test.mjs`. Replace the publisher's `index.ts` with it (import from `@icemourne/description-converter`
+instead of `../index.js`). The old `index.ts` throws on a stub (it reads `perk.editor.en`), so the new package alone is not
+enough: the publisher has to be updated **before** the first stub is written to `liveDescriptions.json`.
+
+What it does in `databaseConverter(converterType, database, inventoryItem)`:
 
 ```ts
 const lookup = expandAliases(database) // full copies, pass as `database` to descriptionConverter and use for every lookup
-const mode = isAliasStub(perk) ? getAliasOutput(settings, perk) : 'copy' // for each perk of `database`
-// 'skip' -> output nothing; 'reference' -> acc[hash] = { hash: perk.hash, aliasOf: perk.aliasOf }; 'copy' -> convert lookup[hash] as usual
+const aliasOutput = isAliasStub(perk) ? getAliasOutput(settings, perk) : 'copy' // for each perk of `database`
+// 'skip' -> nothing; 'copy' -> convert lookup[hash]; 'reference' -> keep { hash, aliasOf } for after the loop
 ```
 
-Run the usual filters (hash >= 50, non-empty English description, Bungie description) on `lookup[hash]`, so a reference
-is only output when the alias would have been output as a copy. `expandAliases` leaves out stubs that point at a missing perk
-(or at another stub) and never throws, so `lookup[hash]` can be `undefined` for those: skip them.
+- The usual filters (hash >= 50, non-empty English description, Bungie description) run on `lookup[hash]`.
+- A reference is added after the loop and only if the row of `aliasOf` is part of the same output. The alias can pass
+  the filters while the original does not (for example only the original repeats the Bungie description), and
+  consumers have nothing to look the alias up with then.
+- `expandAliases` leaves out stubs that point at a missing perk (or at another stub) and never throws, so `lookup[hash]`
+  can be `undefined`: skip those.
+- The example only publishes when run as the program, so `databaseConverter` can be imported by tests.
+
+## Upgrading
+
+Custom `DescriptionFilter` objects need the new `getFromPerk.associated` and `aliases` fields. `Database['perks']` values
+are now `IntermediatePerk | AliasStub`; use `expandAliases` (result: `ExpandedPerks`) before reading `editor`.
+`DescriptionData.database` has to be expanded.

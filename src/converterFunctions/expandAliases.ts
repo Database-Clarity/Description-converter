@@ -38,6 +38,7 @@ export const expandAliases = (perks: IntermediatePerks): ExpandedPerks => {
 /**
  * What to do with an alias for the given settings
  * 'copy' output the expanded copy, 'reference' output { hash, aliasOf }, 'skip' output nothing
+ * A reference must only be output if the perk it points at is output as well, see examples/publisher.ts
  */
 export const getAliasOutput = (settings: DescriptionFilter, stub: AliasStub): 'copy' | 'reference' | 'skip' => {
   if (settings.aliases === 'reference') return 'reference'
