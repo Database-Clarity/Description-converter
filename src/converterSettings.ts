@@ -82,6 +82,13 @@ export type DescriptionFilter = {
   }
 
   /**
+   ** How aliases (the same tooltip published under more than one hash) are output
+   ** 'legacy' frame aliases are output as full copies of the original, sandbox aliases are omitted
+   ** 'reference' every alias is output as { hash, aliasOf } and nothing else
+   */
+  aliases: 'legacy' | 'reference'
+
+  /**
    ** Complicated stuff
    */
   editor: 'main' | 'secondary'
@@ -146,6 +153,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    aliases: 'legacy',
     editor: 'main',
     optional: false
   },
@@ -169,6 +177,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: '',
+    aliases: 'legacy',
     editor: 'secondary',
     optional: false
   },
@@ -205,6 +214,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    aliases: 'legacy',
     editor: 'secondary',
     optional: true,
     toStringConverterOptions: {
@@ -246,6 +256,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    aliases: 'legacy',
     editor: 'secondary',
     optional: false
   },
@@ -269,6 +280,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    aliases: 'legacy',
     editor: 'secondary',
     optional: false
   },
@@ -309,6 +321,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    aliases: 'legacy',
     editor: 'main', // copied from clarity but crayon used secondary ???
     optional: false, // same as above
     toStringConverterOptions: {
@@ -373,6 +386,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: '[enh]',
+    aliases: 'legacy',
     editor: 'secondary',
     optional: true,
     toStringConverterOptions: {
@@ -420,6 +434,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    aliases: 'reference',
     editor: 'main',
     optional: false
   }

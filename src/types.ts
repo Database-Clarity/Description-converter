@@ -11,7 +11,8 @@ export type DescriptionData = {
   editorType: 'main' | 'secondary'
   language: Languages
   hash: number
-  database: Database['perks']
+  /** Must be expanded, see expandAliases */
+  database: ExpandedPerks
 }
 
 export type Stat = {
@@ -67,11 +68,34 @@ export type IntermediatePerk = {
   uploadToLive: boolean
 }
 
+/**
+ * Intermediate form of an alias: a tooltip that is published under a second hash.
+ * Only the alias's own catalog facts are present, everything else is looked up on `aliasOf`
+ */
+export type AliasStub = {
+  hash: number
+  /** Hash of the canonical perk this alias points at */
+  aliasOf: number
+  aliasKind: 'sandbox' | 'frame'
+  name?: string
+  type?: PerkTypes
+  itemHash?: number
+  itemName?: string
+}
+
+/** Perks as stored in the intermediate database, aliases may be stubs */
+export type IntermediatePerks = {
+  [key in string]: IntermediatePerk | AliasStub
+}
+
+/** Perks with every alias stub expanded into a full copy, see expandAliases */
+export type ExpandedPerks = {
+  [key in string]: IntermediatePerk
+}
+
 export type FolderTypes = 'Weapon Frame Exotic' | 'Weapon Frame' | 'Weapon Frame Enhanced'
 export type Database = {
-  perks: {
-    [key in string]: IntermediatePerk
-  }
+  perks: IntermediatePerks
 
   databaseSettings: {
     folders: {

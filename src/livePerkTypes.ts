@@ -395,3 +395,19 @@ export type LivePerk = {
    */
   associated?: number[]
 }
+
+/**
+ ** Alias of another perk, published by settings with `aliases: 'reference'`
+ ** Everything else (descriptions, stats, ...) is on the perk with hash `aliasOf`
+ */
+export type LiveAlias = {
+  /**
+   ** Hash of the alias
+   */
+  hash: number
+
+  /**
+   ** Hash of the perk this alias is an alias of
+   */
+  aliasOf: number
+}
