@@ -68,7 +68,7 @@ test('all weapon sections become headings in every output', () => {
       const json = JSON.stringify(result)
       for (const body of input === sections ? ['hand cannons and pulses', 'swords', 'everything else'] : ['bows and hand cannons', 'pulses', 'rest']) assert.ok(json.includes(body), `${name}: ${body}`)
       assert.ok(!json.includes('weaponTypes'), name)
-      assert.ok(json.includes(input === sections ? 'Sword:' : 'Pulse:'), name)
+      assert.ok(json.includes(input === sections ? 'Sword' : 'Pulse Rifle'), name)
     }
   }
 })
@@ -94,5 +94,22 @@ test('unclosed weapon sections retain their text', () => {
   for (const input of ['<weapons Sword>\nfirst\nsecond', '< weapon type ( Sword ) >\nfirst\nsecond']) {
     const json = JSON.stringify(convert(input))
     assert.ok(json.includes('first') && json.includes('second'))
+  }
+})
+
+// Expected spans derived from editor candidate 1172e06 weaponSectionHeadings,
+// followed by its ordinary bold markup parser; fixtures cover real section labels.
+test('compatibility headings match editor candidate spans', () => {
+  const fixtures = [
+    ['< weapon type ( AR ) >', 'Auto Rifle'],
+    ['<weapons Glaive>', 'Glaive'],
+    ['< (other) >', 'Other weapons'],
+    ['< weapon type ( HC, Bow, mystery ) >', 'Hand Cannon, Combat Bow, mystery'],
+    ['<weapons>', 'Weapons'],
+    ['<weapons Sword>', 'Sword']
+  ]
+  for (const [input, expected] of fixtures) {
+    const line = convert(`${input}\nbody\n<$$>`).find(line => line.linesContent?.some(span => span.text === expected))
+    assert.deepEqual(line?.linesContent, [{ text: expected, classNames: ['bold'] }], input)
   }
 })

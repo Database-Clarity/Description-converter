@@ -4,16 +4,33 @@ import { getLineClasses } from './extractClassesFromLine.js'
 import { convertLinesContent } from './lineConverter.js'
 import { splitTable } from './splitTable.js'
 
+// Matches the editor's weaponHeadings.ts compatibility labels.
+const legacyNames: Readonly<Record<string, string>> = {
+  ar: 'Auto Rifle', bow: 'Combat Bow', fusion: 'Fusion Rifle', gl: 'Grenade Launcher',
+  hc: 'Hand Cannon', 'heavy gl': 'Heavy Grenade Launcher', lfr: 'Linear Fusion Rifle',
+  lmg: 'Machine Gun', pulse: 'Pulse Rifle', rocket: 'Rocket Launcher', scout: 'Scout Rifle',
+  smg: 'Submachine Gun', sniper: 'Sniper Rifle', trace: 'Trace Rifle'
+}
+
 /** Convert legacy weapon delimiters into ordinary headings before parsing tables and text. */
 export const separateTableWeaponType = (
   description: string,
   titles: { [key: string]: DescriptionLine[] }
 ): DescriptionLine[] | undefined => {
-  const ordinary = description
-    .replace(/^[ \t]*<weapons\s+([^>]+)>[ \t]*$/gim, '$1:')
-    .replace(/^[ \t]*<\/weapons\s*>[ \t]*$/gim, '')
-    .replace(/^[ \t]*< (?:weapon type )?\(\s*([^)]*?)\s*\) >[ \t]*$/gm, '$1:')
-    .replace(/^[ \t]*<\$\$>[ \t]*$/gm, '')
+  const ordinary = description.replace(/\r/g, '').split('\n').map((line) => {
+    const header = line.match(/^\s*<weapons(?:\s+(.*?))?\s*>\s*$/i) ??
+      line.match(/^\s*<\s*(?:weapon type\s*)?\((.*?)\)\s*>\s*$/)
+    if (header) {
+      const label = (header[1] || 'Weapons').split(',').map((name) => {
+        const clean = name.trim()
+        const key = clean.toLowerCase()
+        return key === 'other' ? 'Other weapons' : Object.hasOwn(legacyNames, key) ? legacyNames[key] : clean
+      }).join(', ')
+      return `<bold ${label} />`
+    }
+    if (/^\s*(<\/weapons\s*>|<\$\$>)\s*$/i.test(line)) return ''
+    return line
+  }).join('\n')
   return separateBlocks(ordinary, titles)
 }
 
