@@ -1,7 +1,6 @@
 import { cleanObject } from '@icemourne/tool-box'
 
 import { getSettings } from './converterSettings.js'
-import { specializeWeaponTypes, tagWeaponTypes, WeaponTypeContext } from './converterFunctions/specializeWeaponTypes.js'
 import { AllClassNames, DescriptionLine } from './types.js'
 
 export const cleanDescription = <T>(obj: T, converterType: string): T => {
@@ -51,14 +50,6 @@ export const cleanDescription = <T>(obj: T, converterType: string): T => {
       // remove formulas
       if (obj[key]?.hasOwnProperty('formula') || obj[key]?.hasOwnProperty('isFormula')) {
         if (!getFromDescription.formula) {
-          delete obj[key]
-          continue
-        }
-      }
-
-      // remove weapon types
-      if (obj[key]?.hasOwnProperty('weaponTypes')) {
-        if (!getFromDescription.weaponTypes) {
           delete obj[key]
           continue
         }
@@ -121,30 +112,9 @@ const descriptionToString = (description: DescriptionLine[] | undefined, convert
     .trim()
 }
 
-/**
- * Lines that only apply to some weapon types: kept with the weapon types they apply to if the settings ask for it,
- * otherwise specialised for the weapon types of the perk. Without `weaponTypeContext` cleanDescription removes them
- */
-const prepareWeaponTypes = (
-  description: DescriptionLine[] | undefined,
-  converterType: string,
-  weaponTypeContext: WeaponTypeContext | undefined
-) => {
-  const { getFromDescription, weaponTypeNames } = getSettings(converterType)
-  if (!description) return description
-  if (getFromDescription.weaponTypes && (converterType !== 'clarity' || !weaponTypeContext)) return tagWeaponTypes(description, weaponTypeNames)
-  return weaponTypeContext ? specializeWeaponTypes(description, weaponTypeContext) : description
-}
-
-export const descriptionFilter = (
-  description: DescriptionLine[] | undefined,
-  converterType: string,
-  weaponTypeContext?: WeaponTypeContext
-) => {
+export const descriptionFilter = (description: DescriptionLine[] | undefined, converterType: string) => {
   const { toStringConverterOptions } = getSettings(converterType)
-  const newDescription = cleanObject(
-    cleanDescription(prepareWeaponTypes(description, converterType, weaponTypeContext), converterType)
-  )
+  const newDescription = cleanObject(cleanDescription(description, converterType))
 
   // remove spacer from end of description
   let removeSpacer = true

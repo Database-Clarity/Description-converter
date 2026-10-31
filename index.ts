@@ -22,11 +22,6 @@ export type {
 } from './src/types.js'
 
 export { expandAliases, getAliasOutput, isAliasStub } from './src/converterFunctions/expandAliases.js'
-export {
-  specializeWeaponTypes,
-  tagWeaponTypes
-} from './src/converterFunctions/specializeWeaponTypes.js'
-export type { WeaponTypeContext } from './src/converterFunctions/specializeWeaponTypes.js'
 export { extractTitles } from './src/converterFunctions/extractTitles.js'
 export { getDataFromPerk } from './src/converterFunctions/getDataFromPerk.js'
 export { getVariables } from './src/converterFunctions/loadVariables.js'

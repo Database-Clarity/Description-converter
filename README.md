@@ -39,26 +39,10 @@ const aliasOutput = isAliasStub(perk) ? getAliasOutput(settings, perk) : 'copy' 
 
 ## Upgrading
 
-Custom `DescriptionFilter` objects need the new `getFromPerk.associated`, `aliases`, and `weaponTypeNames` fields. `Database['perks']` values
+Custom `DescriptionFilter` objects need the new `getFromPerk.associated`, `aliases` fields. `Database['perks']` values
 are now `IntermediatePerk | AliasStub`; use `expandAliases` (result: `ExpandedPerks`) before reading `editor`.
 `DescriptionData.database` has to be expanded.
 
-## Weapon types
+## Legacy weapon sections
 
-Text for some weapon types only is written in `<weapons Hand Cannon, Pulse Rifle> … </weapons>` blocks (and
-`<weapons other>` for every type no block of the text names). The names are the Bungie weapon types in
-`weaponTypeNames`, plus `weaponTypeExtraTags` (Grenade, Melee, Super, Heavy Grenade Launcher); they are the same list as
-the editor's. The old `< weapon type ( HC, Bow ) > … < ( other ) > … <$$>` still works. Malformed blocks never throw.
-
-`descriptionConverter` tags the lines with `weaponTypes`. `descriptionFilter` then:
-
-- `clarityV2` keeps the lines tagged; `clarity` does so only without context. `weaponTypeNames` of the setting
-  decides the names: `'legacy'` (`HC`, `Heavy GL`, what clarity always had) or `'canonical'` (clarityV2).
-- The seven legacy settings with a third argument `{ weaponTypes, labels, language }` specialises them for the perk
-  (`specializeWeaponTypes`): one weapon type keeps the lines for that type, untagged; several or none keep every block
-  with its label ("Hand Cannon: ") on the first line. Labels are `databaseSettings.weaponTypeLabels[name][language]`, then
-  English, then the name itself. Without the argument clarity retains its tags and the other six remove the lines, as before.
-
-`weaponTypes` of the context is `perk.weaponTypes` of the **expanded** perk (`IntermediatePerk.weaponTypes`, an alias
-uses its own, a stub without facts the ones of its original). It is never part of the output. `examples/publisher.ts` passes
-it; its `externalData` also has to export `databaseSettings`.
+Both `<weapons ...>` and the older `< weapon type (...) >` syntax are accepted as legacy input. Each section is emitted in full under an ordinary heading in every output; weapon facts and labels do not filter descriptions. Existing descriptions should be reviewed and rewritten as ordinary text.

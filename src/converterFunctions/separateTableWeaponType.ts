@@ -1,59 +1,23 @@
 import { classNameList } from '../data.js'
 import { DescriptionLine, TableClassNames } from '../types.js'
-import { allWeaponTypeNames, canonicalWeaponType } from '../weaponTypeNames.js'
 import { getLineClasses } from './extractClassesFromLine.js'
 import { convertLinesContent } from './lineConverter.js'
 import { splitTable } from './splitTable.js'
-import { hasWeaponTags, joinLines, scanWeaponSections } from './weaponSections.js'
 
-/*
-   (
-      < table [^]+?\n<\$>\n?
-      |
-      < weapon type [^]+?\n<\$\$>\n?
-   )
-   |
-   (
-      .+\n?
-      |
-      \n
-   )
-*/
-
-/** Counts weapon blocks so lines can tell which block they belong to */
-type BlockCounter = { next: number }
-
-/**
- * Lines that only apply to some weapon types have `weaponTypes` (names from weaponTypeNames.ts), `weaponBlock`
- * (number of the block the line is in) and `weaponOther` (block was `other`). descriptionFilter removes the last two
- * Supports `<weapons A, B> … </weapons>` and the old `< weapon type (A, B) > … <$$>`
- */
+/** Convert legacy weapon delimiters into ordinary headings before parsing tables and text. */
 export const separateTableWeaponType = (
   description: string,
-  titles: { [key: string]: DescriptionLine[] },
-  counter: BlockCounter = { next: 0 }
+  titles: { [key: string]: DescriptionLine[] }
 ): DescriptionLine[] | undefined => {
-  if (!hasWeaponTags(description)) return separateBlocks(description, titles, counter)
-
-  return scanWeaponSections(description).flatMap((segment): DescriptionLine[] => {
-    const lines = separateBlocks(joinLines(segment.lines), titles, counter) ?? []
-    if (segment.kind === 'text') return lines
-
-    const weaponBlock = counter.next++
-    return lines.map(({ weaponTypes, weaponBlock: nestedBlock, weaponOther, ...line }) => ({
-      weaponTypes: segment.types,
-      weaponBlock,
-      ...(segment.other && { weaponOther: true }),
-      ...line
-    }))
-  })
+  const ordinary = description
+    .replace(/^[ \t]*<weapons\s+([^>]+)>[ \t]*$/gim, '$1:')
+    .replace(/^[ \t]*<\/weapons\s*>[ \t]*$/gim, '')
+    .replace(/^[ \t]*< (?:weapon type )?\(\s*([^)]*?)\s*\) >[ \t]*$/gm, '$1:')
+    .replace(/^[ \t]*<\$\$>[ \t]*$/gm, '')
+  return separateBlocks(ordinary, titles)
 }
 
-const separateBlocks = (
-  description: string,
-  titles: { [key: string]: DescriptionLine[] },
-  counter: BlockCounter
-) => {
+const separateBlocks = (description: string, titles: { [key: string]: DescriptionLine[] }) => {
   const splittedDescription = description
     .match(/(< table [^]+?\n<\$>\n?|< weapon type [^]+?\n<\$\$>\n?)|(.+\n?|\n)/g)
     ?.map((l) => l.trimEnd())
@@ -80,35 +44,6 @@ const separateBlocks = (
         table: tableLines.flatMap((line) => splitTable(line, titles)),
         classNames: [...(tableClassNames || []), 'table'],
         isFormula: tableClassNames?.includes('formula')
-      })
-      return acc
-    }
-    if (description.startsWith('< weapon type ')) {
-      const weaponTypeLines = description.match(/(< (weapon type )?\([^]+?\) >\n[^]*?)(?=(< \(|<\$\$>))/g)
-
-      let notSelectedWeaponTypes: string[] = [...allWeaponTypeNames]
-      weaponTypeLines?.forEach((weaponLine) => {
-        const weaponLines = weaponLine.split('\n')
-        const firstLine = weaponLines.splice(0, 1)
-
-        const currentWeaponTypes = firstLine[0]
-          .replace(/< (weapon type )?\(\s*|\s*\) >/g, '')
-          .split(',')
-          .map((s) => s.trim())
-          .flatMap((name) => (name === 'other' ? ['other'] : canonicalWeaponType(name, true) ?? []))
-
-        notSelectedWeaponTypes = notSelectedWeaponTypes.filter((type) => !currentWeaponTypes.includes(type))
-
-        const isOther = currentWeaponTypes.includes('other')
-        const weaponBlock = counter.next++
-        separateBlocks(weaponLines.join('\n'), titles, counter)?.forEach((line) => {
-          acc.push({
-            weaponTypes: isOther ? notSelectedWeaponTypes : currentWeaponTypes,
-            weaponBlock,
-            ...(isOther && { weaponOther: true }),
-            ...line
-          })
-        })
       })
       return acc
     }

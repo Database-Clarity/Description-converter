@@ -71,12 +71,7 @@ export const databaseConverter = (
         }
         const convertedDescription = descriptionConverter(descriptionData)
         if (convertedDescription) {
-          // weapon type blocks are specialised for the weapon types of this perk (the alias's own for aliases)
-          acc[language] = descriptionFilter(convertedDescription, converterType, {
-            weaponTypes: perk.weaponTypes,
-            labels: databaseSettings?.weaponTypeLabels,
-            language: language as Languages
-          })
+          acc[language] = descriptionFilter(convertedDescription, converterType)
         }
         return acc
       },
