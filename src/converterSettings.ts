@@ -64,7 +64,9 @@ export type DescriptionFilter = {
     table: boolean
 
     /**
-     ** Discontinued, set to false
+     ** Lines that only apply to some weapon types
+     ** true keeps them with the weapon types they apply to, false specialises them for the perk's weapon types
+     ** (see specializeWeaponTypes) or removes them if descriptionFilter has no weapon type context
      */
     weaponTypes: boolean
 
@@ -87,6 +89,12 @@ export type DescriptionFilter = {
    ** 'reference' every alias is output as { hash, aliasOf } and nothing else
    */
   aliases: 'legacy' | 'reference'
+
+  /**
+   ** Names of weapon types on lines that are kept for a weapon type (getFromDescription.weaponTypes)
+   ** 'legacy' old names like "HC" or "Heavy GL", 'canonical' manifest names like "Hand Cannon"
+   */
+  weaponTypeNames: 'legacy' | 'canonical'
 
   /**
    ** Complicated stuff
@@ -153,6 +161,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    weaponTypeNames: 'legacy',
     aliases: 'legacy',
     editor: 'main',
     optional: false
@@ -177,6 +186,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: '',
+    weaponTypeNames: 'legacy',
     aliases: 'legacy',
     editor: 'secondary',
     optional: false
@@ -214,6 +224,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    weaponTypeNames: 'legacy',
     aliases: 'legacy',
     editor: 'secondary',
     optional: true,
@@ -256,6 +267,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    weaponTypeNames: 'legacy',
     aliases: 'legacy',
     editor: 'secondary',
     optional: false
@@ -280,6 +292,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    weaponTypeNames: 'legacy',
     aliases: 'legacy',
     editor: 'secondary',
     optional: false
@@ -321,6 +334,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    weaponTypeNames: 'legacy',
     aliases: 'legacy',
     editor: 'main', // copied from clarity but crayon used secondary ???
     optional: false, // same as above
@@ -386,6 +400,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: '[enh]',
+    weaponTypeNames: 'legacy',
     aliases: 'legacy',
     editor: 'secondary',
     optional: true,
@@ -434,6 +449,7 @@ export const converterSettings: { [key: string]: DescriptionFilter } = {
       excludeClassNames: []
     },
     enhancedArrowReplacement: undefined,
+    weaponTypeNames: 'canonical',
     aliases: 'reference',
     editor: 'main',
     optional: false

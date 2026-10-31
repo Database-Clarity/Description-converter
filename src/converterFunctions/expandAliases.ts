@@ -1,13 +1,13 @@
 import { DescriptionFilter } from '../converterSettings.js'
 import { AliasStub, ExpandedPerks, IntermediatePerk, IntermediatePerks } from '../types.js'
 
-const factNames = ['name', 'type', 'itemHash', 'itemName'] as const
+const factNames = ['name', 'type', 'itemHash', 'itemName', 'weaponTypes'] as const
 
 export const isAliasStub = (perk: IntermediatePerk | AliasStub): perk is AliasStub => 'aliasOf' in perk
 
 /**
  * Replaces every alias stub with a full copy of the perk it points at, with the hash of the alias.
- * If the stub has its own facts (name, type, itemHash, itemName) they replace the copied ones.
+ * If the stub has its own facts (name, type, itemHash, itemName, weaponTypes) they replace the copied ones.
  * Stubs pointing at a perk that is missing, or that is a stub itself, are left out. Does not throw
  * Input is not modified, perks that are not aliases are returned as they are
  */

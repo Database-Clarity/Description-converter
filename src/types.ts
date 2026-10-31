@@ -63,6 +63,8 @@ export type IntermediatePerk = {
   activationCondition?: string
   /** Canonical hashes of related tooltips, in authored order; only published when the settings ask for it */
   associated?: number[]
+  /** Names of the weapon types (weaponTypeNames.ts) this perk is on, never published. Used to specialise weapon type blocks */
+  weaponTypes?: string[]
   lastUpload: number
   inLiveDatabase: boolean
   uploadToLive: boolean
@@ -81,6 +83,8 @@ export type AliasStub = {
   type?: PerkTypes
   itemHash?: number
   itemName?: string
+  /** Weapon types of the alias, replaces the ones of the original when the stub has any facts */
+  weaponTypes?: string[]
 }
 
 /** Perks as stored in the intermediate database, aliases may be stubs */
@@ -111,7 +115,13 @@ export type Database = {
         linkedWith: number
       }
     }
+    /** Singular label of each weapon type per language, used for weapon type blocks of perks on several weapon types */
+    weaponTypeLabels?: WeaponTypeLabels
   }
+}
+
+export type WeaponTypeLabels = {
+  [weaponType: string]: { [key in Languages]?: string }
 }
 
 export type LinesContent = {
@@ -176,4 +186,8 @@ export type DescriptionLine = {
   table?: TableLine[]
   /** If this exists that means this line only applies to some specific weapon types */
   weaponTypes?: (string | undefined)[]
+  /** Number of the weapon type block this line is in, only used to find the first line of a block. Removed by descriptionFilter */
+  weaponBlock?: number
+  /** The weapon type block of this line is `other`. Removed by descriptionFilter */
+  weaponOther?: boolean
 }

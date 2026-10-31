@@ -42,3 +42,23 @@ const aliasOutput = isAliasStub(perk) ? getAliasOutput(settings, perk) : 'copy' 
 Custom `DescriptionFilter` objects need the new `getFromPerk.associated` and `aliases` fields. `Database['perks']` values
 are now `IntermediatePerk | AliasStub`; use `expandAliases` (result: `ExpandedPerks`) before reading `editor`.
 `DescriptionData.database` has to be expanded.
+
+## Weapon types
+
+Text for some weapon types only is written in `<weapons Hand Cannon, Pulse Rifle> … </weapons>` blocks (and
+`<weapons other>` for every type no block of the text names). The names are the Bungie weapon types in
+`weaponTypeNames`, plus `weaponTypeExtraTags` (Grenade, Melee, Super, Heavy Grenade Launcher); they are the same list as
+the editor's. The old `< weapon type ( HC, Bow ) > … < ( other ) > … <$$>` still works. Malformed blocks never throw.
+
+`descriptionConverter` tags the lines with `weaponTypes`. `descriptionFilter` then:
+
+- `getFromDescription.weaponTypes: true` (clarity, clarityV2) keeps the lines tagged. `weaponTypeNames` of the setting
+  decides the names: `'legacy'` (`HC`, `Heavy GL`, what clarity always had) or `'canonical'` (clarityV2).
+- `false` (the other six) with a third argument `{ weaponTypes, labels, language }` specialises them for the perk
+  (`specializeWeaponTypes`): one weapon type keeps the lines for that type, untagged; several or none keep every block
+  with its label ("Hand Cannon: ") on the first line. Labels are `databaseSettings.weaponTypeLabels[name][language]`, then
+  English, then the name itself. Without the argument the lines are removed, as before.
+
+`weaponTypes` of the context is `perk.weaponTypes` of the **expanded** perk (`IntermediatePerk.weaponTypes`, an alias
+uses its own, a stub without facts the ones of its original). It is never part of the output. `examples/publisher.ts` passes
+it; its `externalData` also has to export `databaseSettings`.

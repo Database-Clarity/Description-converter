@@ -7,6 +7,7 @@ import { pathToFileURL } from 'url'
 
 import {
   DescriptionData,
+  Database,
   IntermediatePerks,
   Languages,
   LiveAlias,
@@ -25,7 +26,12 @@ import _ from 'lodash'
 
 type InventoryItem = { [hash: string]: { displayProperties?: { description?: string } } } | undefined
 
-export const databaseConverter = (converterType: string, database: IntermediatePerks, inventoryItem: InventoryItem) => {
+export const databaseConverter = (
+  converterType: string,
+  database: IntermediatePerks,
+  inventoryItem: InventoryItem,
+  databaseSettings?: Database['databaseSettings']
+) => {
   const settings = getSettings(converterType)
   // alias stubs become full copies of their original, used for every lookup and for the checks below
   const lookup = expandAliases(database)
@@ -65,7 +71,12 @@ export const databaseConverter = (converterType: string, database: IntermediateP
         }
         const convertedDescription = descriptionConverter(descriptionData)
         if (convertedDescription) {
-          acc[language] = descriptionFilter(convertedDescription, converterType)
+          // weapon type blocks are specialised for the weapon types of this perk (the alias's own for aliases)
+          acc[language] = descriptionFilter(convertedDescription, converterType, {
+            weaponTypes: perk.weaponTypes,
+            labels: databaseSettings?.weaponTypeLabels,
+            language: language as Languages
+          })
         }
         return acc
       },
@@ -88,7 +99,7 @@ export const databaseConverter = (converterType: string, database: IntermediateP
 
 // only publish when started as the program, so databaseConverter can be imported by tests
 if (process.argv[1] !== undefined && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
-  const { database, inventoryItem } = await import('./externalData.js')
+  const { database, databaseSettings, inventoryItem } = await import('./externalData.js')
 
   if (!existsSync('./database')) {
     mkdirSync('./database')
@@ -100,7 +111,7 @@ if (process.argv[1] !== undefined && import.meta.url === pathToFileURL(path.reso
   for (const key in converterSettings) {
     writeFileSync(
       `./database/descriptions/${key}.json`,
-      customJsonStringify(databaseConverter(key, database, inventoryItem), [
+      customJsonStringify(databaseConverter(key, database, inventoryItem, databaseSettings), [
         'stat',
         'multiplier',
         'weaponTypes',

@@ -17,12 +17,25 @@ export type {
   RowContent,
   Stat,
   Stats,
-  TableLine
+  TableLine,
+  WeaponTypeLabels
 } from './src/types.js'
 
 export { expandAliases, getAliasOutput, isAliasStub } from './src/converterFunctions/expandAliases.js'
+export {
+  specializeWeaponTypes,
+  tagWeaponTypes
+} from './src/converterFunctions/specializeWeaponTypes.js'
+export type { WeaponTypeContext } from './src/converterFunctions/specializeWeaponTypes.js'
 export { extractTitles } from './src/converterFunctions/extractTitles.js'
 export { getDataFromPerk } from './src/converterFunctions/getDataFromPerk.js'
 export { getVariables } from './src/converterFunctions/loadVariables.js'
+export {
+  allWeaponTypeNames,
+  canonicalWeaponType,
+  legacyWeaponTypeNames,
+  weaponTypeExtraTags,
+  weaponTypeNames
+} from './src/weaponTypeNames.js'
 export { descriptionConverter } from './src/descriptionConverter.js'
 export { descriptionFilter } from './src/descriptionFilter.js'
