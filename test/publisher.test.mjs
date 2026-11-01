@@ -145,6 +145,48 @@ test('rejects missing import bodies and named exports in selected languages', ()
   assert.ok(databaseConverter('vaultZero', { ...database, 800: translated }, inventoryItem)[800])
 })
 
+const prototypeNames = Object.getOwnPropertyNames(Object.prototype)
+
+test('rejects absent prototype-named exports in both scopes and every preset', () => {
+  for (const from of ['global', '300']) {
+    for (const exportName of prototypeNames) {
+      const input = { ...database, 800: perk(800, `Before\nimport ${exportName} from ${from}\nAfter`) }
+      const message = from === 'global'
+        ? `Missing global export ${exportName} for 800/en`
+        : `Missing export ${exportName} from ${from} for 800/en`
+      for (const preset of Object.keys(converterSettings)) {
+        assert.throws(() => databaseConverter(preset, input, inventoryItem), { message }, `${preset}/${from}/${exportName}`)
+      }
+    }
+  }
+})
+
+test('preserves authored and empty prototype-named exports, override order and literal dollars', () => {
+  for (const from of ['global', '300']) {
+    for (const exportName of prototypeNames) {
+      for (const payload of [`PAYLOAD_${exportName} $& $$ $' $\``, '']) {
+        const exported = `export ${exportName} (\n${payload}\n)`
+        const input = {
+          ...database,
+          800: perk(800, `Before\nimport ${exportName} from ${from}\nAfter`)
+        }
+        if (from === 'global') {
+          input[1] = perk(1, `export ${exportName} (\nOVERRIDDEN_PAYLOAD\n)`)
+          input[1].editor.en.secondary = exported
+        } else {
+          input[300] = perk(300, `Target\n${exported}`)
+        }
+        for (const preset of Object.keys(converterSettings)) {
+          const text = JSON.stringify(databaseConverter(preset, input, inventoryItem)[800].descriptions)
+          assert.ok(text.includes('Before') && text.includes('After'), `${preset}/${from}/${exportName}`)
+          if (payload) assert.ok(text.includes(payload), `${preset}/${from}/${exportName}`)
+          assert.doesNotMatch(text, /import |native code|OVERRIDDEN_PAYLOAD/)
+        }
+      }
+    }
+  }
+})
+
 test('rejects import cycles instead of leaving unresolved markup after the pass limit', () => {
   const input = { ...database, 800: perk(800, 'import main from 900'), 900: perk(900, 'import main from 800') }
   assert.throws(() => databaseConverter('clarityV2', input, inventoryItem), /cyclic imports/)

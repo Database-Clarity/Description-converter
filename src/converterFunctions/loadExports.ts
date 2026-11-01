@@ -2,7 +2,7 @@ import { DescriptionData } from '../types.js'
 
 const getExports = (description: string) => {
   const exported = description.match(/^export [A-z0-9 ]+ \([\s\S]*?\n\)$/gm)
-  if (exported === null) return
+  if (exported === null) return new Map<string, string>()
 
   return exported.reduce((acc, exportText) => {
     const lines = exportText.split('\n')
@@ -10,9 +10,9 @@ const getExports = (description: string) => {
     lines.splice(0, 1)
     lines.splice(-1, 1)
 
-    acc[exportName] = lines.join('\n')
+    acc.set(exportName, lines.join('\n'))
     return acc
-  }, {} as { [key: string]: string })
+  }, new Map<string, string>())
 }
 
 export const loadExports = (descriptionData: DescriptionData): string => {
@@ -68,21 +68,19 @@ export const loadExports = (descriptionData: DescriptionData): string => {
       }
 
       if (from === 'global') {
-        const globalExports = {
+        const globalExports = new Map([
           ...getExports(database[1]?.editor[language]?.main || ''),
           ...getExports(database[1]?.editor[language]?.secondary || '')
-        }
-        if (globalExports[name] === undefined) throw new Error(`Missing global export ${name} for ${hash}/${language}`)
-        description = description.replace(line, () => globalExports[name])
+        ])
+        const imported = globalExports.get(name)
+        if (imported === undefined) throw new Error(`Missing global export ${name} for ${hash}/${language}`)
+        description = description.replace(line, () => imported)
         return
       }
 
-      const exports = {
-        ...getExports(database[from]?.editor[language]?.[editorToImportFrom] || '')
-      }
-
-      if (exports[name] === undefined) throw new Error(`Missing export ${name} from ${from} for ${hash}/${language}`)
-      description = description.replace(line, () => exports[name])
+      const imported = getExports(database[from]?.editor[language]?.[editorToImportFrom] || '').get(name)
+      if (imported === undefined) throw new Error(`Missing export ${name} from ${from} for ${hash}/${language}`)
+      description = description.replace(line, () => imported)
     })
   }
 

@@ -38,6 +38,8 @@ const aliasOutput = isAliasStub(perk) ? getAliasOutput(settings, perk) : 'copy' 
   including self references/cycles, missing reserved globals 1/2/3, and associations to missing, alias or self targets.
 - Missing import bodies/languages or named exports throw with the source hash/language; deliberately empty bodies
   remain valid. Cyclic imports or imports unresolved after the existing five-pass limit throw instead of losing text.
+- Named export maps use authored keys only, including `constructor`, `__proto__` and `toString`. Missing
+  prototype-named imports reject in both global and tooltip scopes; explicitly authored empty exports remain valid.
 - `validateOutputReferences` runs after filtering/cleaning. Associations whose canonical target was filtered out
   reject the output rather than pruning authored associations. References to filtered canonicals are still omitted.
 - The example only publishes when run as the program, so `databaseConverter` can be imported by tests.
