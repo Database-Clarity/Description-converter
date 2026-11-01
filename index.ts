@@ -22,6 +22,7 @@ export type {
 } from './src/types.js'
 
 export { expandAliases, getAliasOutput, isAliasStub } from './src/converterFunctions/expandAliases.js'
+export { validateOutputReferences, validateReferences } from './src/converterFunctions/validateReferences.js'
 export { extractTitles } from './src/converterFunctions/extractTitles.js'
 export { getDataFromPerk } from './src/converterFunctions/getDataFromPerk.js'
 export { getVariables } from './src/converterFunctions/loadVariables.js'

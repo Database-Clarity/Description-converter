@@ -10,6 +10,7 @@
   "description": "",
   "scripts": {
     "build": "tsc",
+    "prepare": "npm run build",
     "test": "tsc && node --test test/"
   },
   "repository": {

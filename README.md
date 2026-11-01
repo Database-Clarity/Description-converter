@@ -34,8 +34,18 @@ const aliasOutput = isAliasStub(perk) ? getAliasOutput(settings, perk) : 'copy' 
   the filters while the original does not (for example only the original repeats the Bungie description), and
   consumers have nothing to look the alias up with then.
 - `expandAliases` leaves out stubs that point at a missing perk (or at another stub) and never throws, so `lookup[hash]`
-  can be `undefined`: skip those.
+  can be `undefined`. The publisher calls `validateReferences` first to reject these invalid inputs explicitly,
+  including self references/cycles, missing reserved globals 1/2/3, and associations to missing, alias or self targets.
+- Missing import bodies/languages or named exports throw with the source hash/language; deliberately empty bodies
+  remain valid. Cyclic imports or imports unresolved after the existing five-pass limit throw instead of losing text.
+- `validateOutputReferences` runs after filtering/cleaning. Associations whose canonical target was filtered out
+  reject the output rather than pruning authored associations. References to filtered canonicals are still omitted.
 - The example only publishes when run as the program, so `databaseConverter` can be imported by tests.
+- The CLI converts/validates all eight outputs and fetches the version before creating or writing output files,
+  so a reference/conversion/network failure cannot leave an earlier preset looking like a completed release.
+
+`npm`'s `prepare` lifecycle compiles the package when installing an exact Git commit for isolated adoption review.
+This does not release the declared version to the registry or authorize production use of that Git dependency.
 
 ## Upgrading
 

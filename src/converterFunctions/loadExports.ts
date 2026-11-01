@@ -54,12 +54,16 @@ export const loadExports = (descriptionData: DescriptionData): string => {
       const editorToImportFrom = editorType === 'main' ? 'secondary' : 'main'
 
       if (name === 'self') {
-        description = description.replace(line, database[hash].editor[language]?.[editorToImportFrom].trim() || '')
+        const imported = database[hash]?.editor[language]?.[editorToImportFrom]
+        if (imported === undefined) throw new Error(`Missing self import for ${hash}/${language}/${editorToImportFrom}`)
+        description = description.replace(line, () => imported.trim())
         return
       }
 
       if (name === 'main' || name === 'secondary') {
-        description = description.replace(line, () => database[from]?.editor[language]?.[name] || '')
+        const imported = database[from]?.editor[language]?.[name]
+        if (imported === undefined) throw new Error(`Missing import ${name} from ${from} for ${hash}/${language}`)
+        description = description.replace(line, () => imported)
         return
       }
 
@@ -68,7 +72,8 @@ export const loadExports = (descriptionData: DescriptionData): string => {
           ...getExports(database[1]?.editor[language]?.main || ''),
           ...getExports(database[1]?.editor[language]?.secondary || '')
         }
-        description = description.replace(line, globalExports[name] || '')
+        if (globalExports[name] === undefined) throw new Error(`Missing global export ${name} for ${hash}/${language}`)
+        description = description.replace(line, () => globalExports[name])
         return
       }
 
@@ -76,7 +81,8 @@ export const loadExports = (descriptionData: DescriptionData): string => {
         ...getExports(database[from]?.editor[language]?.[editorToImportFrom] || '')
       }
 
-      description = description.replace(line, exports[name] || '')
+      if (exports[name] === undefined) throw new Error(`Missing export ${name} from ${from} for ${hash}/${language}`)
+      description = description.replace(line, () => exports[name])
     })
   }
 
@@ -86,6 +92,8 @@ export const loadExports = (descriptionData: DescriptionData): string => {
     if (importsFound === null) break
     replaceImports(importsFound)
   }
+
+  if (getImports(description)?.length) throw new Error(`Unresolved or cyclic imports for ${hash}/${language} after 5 passes`)
 
   return description
 }

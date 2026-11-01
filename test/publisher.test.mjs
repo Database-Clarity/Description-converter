@@ -36,9 +36,7 @@ const database = {
   // normal original with a sandbox and a frame alias
   300: perk(300, 'Normal text'),
   400: stub(400, 300, 'sandbox'),
-  500: stub(500, 300, 'frame', { name: 'Frame alias', type: 'Weapon Frame' }),
-  // alias of a perk that does not exist
-  600: stub(600, 999, 'frame', { name: 'Lost', type: 'Weapon Frame' })
+  500: stub(500, 300, 'frame', { name: 'Frame alias', type: 'Weapon Frame' })
 }
 const inventoryItem = { 100: { displayProperties: { description: 'Bungie text' } } }
 
@@ -72,7 +70,6 @@ test('legacy settings output frame copies and skip sandbox aliases', () => {
     const output = databaseConverter(name, database, inventoryItem)
 
     assert.equal(output[400], undefined, name)
-    assert.equal(output[600], undefined, name)
     assert.equal(output[500].hash, 500, name)
     assert.equal('aliasOf' in output[500], false, name)
     assert.deepEqual(output[500].descriptions, output[300].descriptions, name)
@@ -80,8 +77,88 @@ test('legacy settings output frame copies and skip sandbox aliases', () => {
   assert.equal(databaseConverter('clarity', database, inventoryItem)[500].name, 'Frame alias')
 })
 
-test('does not throw on stubs, including unknown targets and stubs of stubs', () => {
-  const output = databaseConverter('clarityV2', { ...database, 700: stub(700, 400, 'sandbox') }, inventoryItem)
-  assert.equal(output[600], undefined)
-  assert.equal(output[700], undefined)
+test('rejects missing targets, alias chains, self references and cycles in every preset', () => {
+  const invalid = [
+    { 600: stub(600, 999, 'frame') },
+    { 700: stub(700, 400, 'sandbox') },
+    { 600: stub(600, 600, 'sandbox') },
+    { 600: stub(600, 700, 'sandbox'), 700: stub(700, 600, 'sandbox') }
+  ]
+  for (const name of Object.keys(converterSettings)) {
+    for (const aliases of invalid) {
+      assert.throws(() => databaseConverter(name, { ...database, ...aliases }, inventoryItem), /Invalid alias/)
+    }
+  }
+})
+
+test('requires all reserved canonical globals before conversion, even for empty output', () => {
+  for (const hash of [1, 2, 3]) {
+    const missing = { ...database }
+    delete missing[hash]
+    assert.throws(() => databaseConverter('clarityV2', missing, inventoryItem), new RegExp(`reserved global ${hash}`))
+    assert.throws(() => databaseConverter('clarityV2', { ...database, [hash]: stub(hash, 300, 'sandbox') }, inventoryItem), /reserved global/)
+  }
+})
+
+test('rejects missing, alias and self associated targets without pruning authored associations', () => {
+  for (const target of [999, 400, 300]) {
+    const input = { ...database, 300: perk(300, 'Normal text', { associated: [target] }) }
+    for (const name of Object.keys(converterSettings)) {
+      assert.throws(() => databaseConverter(name, input, inventoryItem), /Invalid association/)
+      assert.deepEqual(input[300].associated, [target])
+    }
+  }
+})
+
+test('checks associated closure after Bungie, empty and reserved target filtering', () => {
+  for (const target of [100, 120, 10]) {
+    const input = { ...database, 300: perk(300, 'Normal text', { associated: [target] }) }
+    assert.throws(() => databaseConverter('clarityV2', input, inventoryItem), /canonical target was filtered out/)
+    assert.deepEqual(input[300].associated, [target])
+    assert.ok(databaseConverter('clarity', input, inventoryItem)[300])
+  }
+})
+
+test('preserves associated order and exact stub shapes for closed valid output', () => {
+  const input = {
+    ...database,
+    300: perk(300, 'Normal text', { associated: [900, 800] }),
+    800: perk(800, 'Second target'),
+    900: perk(900, 'First target')
+  }
+  const output = databaseConverter('clarityV2', input, inventoryItem)
+  assert.deepEqual(output[300].associated, [900, 800])
+  assert.deepEqual(output[400], { hash: 400, aliasOf: 300 })
+  assert.deepEqual(output[500], { hash: 500, aliasOf: 300 })
+  assert.equal('associated' in databaseConverter('clarity', input, inventoryItem)[300], false)
+})
+
+test('rejects missing import bodies and named exports in selected languages', () => {
+  for (const text of ['import main from 999', 'import secondary from 999', 'import Missing from 300', 'import Missing from global']) {
+    for (const name of Object.keys(converterSettings)) {
+      assert.throws(() => databaseConverter(name, { ...database, 800: perk(800, text) }, inventoryItem), /Missing (import|export|global export)/)
+    }
+  }
+  const translated = perk(800, 'English')
+  translated.editor.de = { main: 'import main from 300', secondary: '' }
+  assert.throws(() => databaseConverter('clarityV2', { ...database, 800: translated }, inventoryItem), /800\/de/)
+  assert.ok(databaseConverter('vaultZero', { ...database, 800: translated }, inventoryItem)[800])
+})
+
+test('rejects import cycles instead of leaving unresolved markup after the pass limit', () => {
+  const input = { ...database, 800: perk(800, 'import main from 900'), 900: perk(900, 'import main from 800') }
+  assert.throws(() => databaseConverter('clarityV2', input, inventoryItem), /cyclic imports/)
+})
+
+test('allows intentionally empty imported bodies and preserves literal replacement characters', () => {
+  const input = {
+    ...database,
+    800: perk(800, 'Before\nimport main from 120\nimport main from 400\nimport Money from global\nAfter'),
+    300: perk(300, 'Cost $&'),
+    1: perk(1, 'export Money (\nPrice $&\n)')
+  }
+  const text = JSON.stringify(databaseConverter('clarityV2', input, inventoryItem)[800].descriptions)
+  assert.ok(text.includes('Cost $&'))
+  assert.ok(text.includes('Price $&'))
+  assert.equal(text.includes('import'), false)
 })

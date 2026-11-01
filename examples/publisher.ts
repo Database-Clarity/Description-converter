@@ -19,7 +19,9 @@ import {
   getAliasOutput,
   getDataFromPerk,
   getSettings,
-  isAliasStub
+  isAliasStub,
+  validateOutputReferences,
+  validateReferences
 } from '../index.js'
 import { cleanObject, customJsonStringify, persistentFetch } from '@icemourne/tool-box'
 import _ from 'lodash'
@@ -33,6 +35,7 @@ export const databaseConverter = (
   databaseSettings?: Database['databaseSettings']
 ) => {
   const settings = getSettings(converterType)
+  validateReferences(database)
   // alias stubs become full copies of their original, used for every lookup and for the checks below
   const lookup = expandAliases(database)
   const references: { [hash: string]: LiveAlias } = {}
@@ -89,30 +92,23 @@ export const databaseConverter = (
     if (newDatabase[reference.aliasOf] !== undefined) newDatabase[hash] = reference as any
   }
 
-  return cleanObject(newDatabase)
+  const output = cleanObject(newDatabase)
+  validateOutputReferences(output)
+  return output
 }
 
 // only publish when started as the program, so databaseConverter can be imported by tests
 if (process.argv[1] !== undefined && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   const { database, databaseSettings, inventoryItem } = await import('./externalData.js')
 
-  if (!existsSync('./database')) {
-    mkdirSync('./database')
-  }
-  if (!existsSync('./database/descriptions')) {
-    mkdirSync('./database/descriptions')
-  }
-
+  const outputs: Record<string, string> = {}
   for (const key in converterSettings) {
-    writeFileSync(
-      `./database/descriptions/${key}.json`,
-      customJsonStringify(databaseConverter(key, database, inventoryItem, databaseSettings), [
-        'stat',
-        'multiplier',
-        'weaponTypes',
-        'classNames'
-      ])
-    )
+    outputs[key] = customJsonStringify(databaseConverter(key, database, inventoryItem, databaseSettings), [
+      'stat',
+      'multiplier',
+      'weaponTypes',
+      'classNames'
+    ])
   }
 
   type Versions = {
@@ -126,6 +122,13 @@ if (process.argv[1] !== undefined && import.meta.url === pathToFileURL(path.reso
   const newVersion = {
     ...version,
     descriptions: Number((version.descriptions * 10000 + 1).toFixed(4)) / 10000
+  }
+
+  if (!existsSync('./database/descriptions')) {
+    mkdirSync('./database/descriptions', { recursive: true })
+  }
+  for (const [key, output] of Object.entries(outputs)) {
+    writeFileSync(`./database/descriptions/${key}.json`, output)
   }
   writeFileSync('./database/versions.json', JSON.stringify(newVersion, null, 1))
 
